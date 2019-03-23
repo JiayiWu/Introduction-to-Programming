@@ -6,9 +6,9 @@ coach团队
 
 后端 伍佳艺、张晨剑
 
-面向南京大学软件学院2018级的同学
+面向南京大学软件学院新入学的同学
 ==== 
-第一批同学（Github名称）
+第一批同学[2018年入学]（Github名称）
 * chenghaopeng
 * guolihua
 * stormbroken
@@ -23,7 +23,7 @@ coach团队
 
 技术选型
 ==== 
-前端选择react  
+前端选择React  
 后端选择Java web
 
 入门参考
@@ -51,7 +51,8 @@ https://github.com/JiayiWu/TravelWebsites/tree/master/client
 
 后端
 --------------
-后端的学习路径很明显，请大家先进行Java基础入门（推荐看马士兵的Java基础入门，搜索就有），基础入门后请大家看SpringBoot框架(对这项目看最好，然后不懂得百度查阅相关语法，不要直接啃官方文档，官方文档只是做参考)  
+后端的学习路径很明显，请大家先进行Java基础入门（推荐看马士兵的Java基础入门，搜索就有），基础入门后请大家看SpringBoot框架(对着项目看最好，然后不懂得查阅相关语法，不要直接啃官方文档，官方文档只是做参考，不适合直接入门)    
+代码工具推荐  IntelliJ IDEA(面向学生免费) eclipse  
 项目参考地址  
 https://github.com/JiayiWu/TravelWebsites/tree/master/server  
 
