@@ -17,7 +17,8 @@ Here's the steps to serve our static assets:
 3. add an edit button in #TodoDetail. When click it, #TodoDetail turn into edit mode.
 In edit mode, we can modify title, content, noticeTime and save it (we may provide a save button?).
 4. when click add button in #TodoList, we create a new todo item. We should automatically activate this item and make #TodoDetail edit mode.
-5. when I say 'we', it's just 'you'. So those tasks should be finished all by you. Everything in this project is completely editable, you even have an option to delete all and rewrite your project to make it work. Good luck.
+5. when I say 'we', it's just 'you'. So those tasks should be finished all by you. Everything in this project is completely editable, you even have an option to delete all and rewrite your project to make it work. Good luck. 
+6. every external lib like jQuery, Bootstrap, and moment.js is forbidden during all the iterations for this project, you should use native API to make it work. (every external lib is allowed in our next project)
 
 ### Thinkings
 1. compare the concept 'class' between JavaScript and Java.
