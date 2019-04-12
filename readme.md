@@ -69,7 +69,7 @@ Step2
 
 Task2
 ==== 
-**前后端总体任务都是一个月，目前分成两部分，按两周计算，请同学们先完成后端任务Task1和前端任务迭代1**
+**前后端总体任务都是一个月，目前分成两部分，每一部分按两周计算，请同学们先完成后端任务Task1和前端任务迭代1**
 
 [后端任务地址](https://github.com/JiayiWu/Introduction-to-Programming/blob/master/2019task/be/task1)
 
