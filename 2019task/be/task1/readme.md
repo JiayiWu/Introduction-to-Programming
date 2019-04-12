@@ -113,7 +113,7 @@ public class Practice {
 #### 接下来操作需要导入我们提供的数据
 ##### 函数练习
 * 使用名为practice的数据库
-* 把我们提供的数据（prac.sql）导入到practice数据库中（具体语法请查mysql source语法）具体会有四张表，分别是score/student/orders/products[数据下载地址](http://example.com)
+* 把我们提供的数据（prac.sql）导入到practice数据库中（具体语法请查mysql source语法）具体会有四张表，分别是score/student/orders/products[数据下载地址](https://pan.baidu.com/s/1w7CyMp6z1yBrSoohWwoLjw) 提取码是2jws
 
 5.查找学生ID为1的学生最高成绩（使用max函数）
 6.查找学生ID为1的学生最低成绩（使用min函数）
