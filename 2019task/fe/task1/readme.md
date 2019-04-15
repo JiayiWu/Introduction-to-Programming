@@ -7,7 +7,7 @@ Firstly sorry about that you all should include Node.js to run this project, whi
 Here's the steps to serve our static assets:
 1. visit the [Node.js homepage](https://nodejs.org/en/) and download LTS version 10.15.x, then install it.
 2. open your terminal to check whether you have installed successfully: type 'node -v' , press enter, and check if there is 'v10.15.x'.
-3. use the command 'cd [path]' to jump to our project directory '/fe/todo', try this command 'npm i -g serve'. If you get permission error, try 'sudo npm i -g serve'. If there's no errors, run 'serve src'.
+3. use the command 'cd [path]' to jump to our project directory '/fe/task1', try this command 'npm i -g serve'. If you get permission error, try 'sudo npm i -g serve'. If there's no errors, run 'serve src'.
 4. visit [todo app](http://localhost:5000).
 5. you should use latest chrome/firefox browser and disable cache in your browser's network tab. (when we move to webpack + react, current step is no longer necessary)
 
@@ -32,4 +32,4 @@ In edit mode, we can modify title, content, noticeTime and save it (we may provi
 
 ### Last to Say
 Every question is welcomed only after you have seriously consider it and could not find a solution.
-And if there are words in this doc that makes you confused, it's my fault and please point it out to me as soon as possible.
+And if there are words in this doc that make you confused, it's my fault and please point it out to me as soon as possible.
