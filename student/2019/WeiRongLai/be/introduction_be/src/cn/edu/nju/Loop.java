@@ -43,5 +43,10 @@ public class Loop {
         System.out.println("while:"+sumWhile +" and "+sumWhile1);
         System.out.println("for:"+sumFor+" and "+sumFor1);
         System.out.println("do_while:"+sumDo+" and "+sumDo1);
+
+        int[] anArray={1,2,3,4,5,6,7};
+        for(i=0;i<anArray.length;++i){
+            System.out.println(anArray[i]);
+        }
     }
 }
