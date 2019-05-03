@@ -16,7 +16,7 @@
 6.思考，如何使用循环语句和条件语句来判断一个数是否为素数。[提交代码]
 
 
-7. 使用if...else if...else，输入为10，20，30，40，50中的一个，如何判断他们的值。用switch优化多重的判断。[提交代码]
+7.使用if...else if...else，输入为10，20，30，40，50中的一个，如何判断他们的值。用switch优化多重的判断。[提交代码]
 
 8.了解BufferredReader，使用BufferedReader从控制台读取输入。了解FileInputStream、FileOutputSteam， 读取文件、写文件。思考在读取文件的时候如果没有读到文件，会发生什么？连接Java 异常 try…catch机制。[提交代码和Readme.md文件]
 

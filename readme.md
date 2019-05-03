@@ -73,13 +73,13 @@ Task2
 
 [后端任务地址](https://github.com/JiayiWu/Introduction-to-Programming/blob/master/2019task/be/task1)
 
-* task1完成时间两周，具体是4月12到4月26，请按照说明提交对应的文件。
+* task1完成时间两周，具体是4月12到5月4号（因为4月27同学们考试DDL延迟），请按照说明提交对应的文件。
 
 * 在../student/2019/(学生用户名)/be/task1下提交相应文件
 
 [前端任务地址](https://github.com/JiayiWu/Introduction-to-Programming/tree/master/2019task/fe/task1)
 
-* 迭代i完成时间两周，具体是4月12到4月26，请按照说明提交对应的文件。
+* 迭代i完成时间两周，具体是4月12到5月4号（因为4月27同学们考试DDL延迟），请按照说明提交对应的文件。
 
 * 在../student/2019/(学生用户名)/fe/task1下提交相应文件
 
