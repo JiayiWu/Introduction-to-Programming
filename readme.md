@@ -67,4 +67,26 @@ Step1
 Step2  
 通过上面提供的前后端学习路径来了解前后端知识，多去尝试，搭建一些小的Demo（Demo可以放在以自己名字建的目录下面），选定自己喜欢的技术栈，记录自己的学习探索历程并说说自己选择该技术栈的原因以及一些认识（通过写markdown文件放到个人目录下）  
 
+Task2
+==== 
+**前后端总体任务都是一个月，目前分成两部分，每一部分按两周计算，请同学们先完成后端任务Task1和前端任务迭代1**
+
+[后端任务地址](https://github.com/JiayiWu/Introduction-to-Programming/blob/master/2019task/be/task1)
+
+* task1完成时间两周，具体是4月12到5月4号（因为4月27同学们考试DDL延迟），请按照说明提交对应的文件。
+
+* 在../student/2019/(学生用户名)/be/task1下提交相应文件
+
+[前端任务地址](https://github.com/JiayiWu/Introduction-to-Programming/tree/master/2019task/fe/task1)
+
+* 迭代i完成时间两周，具体是4月12到5月4号（因为4月27同学们考试DDL延迟），请按照说明提交对应的文件。
+
+* 在../student/2019/(学生用户名)/fe/task1下提交相应文件
+
+* 提交源码以及2张截图，截图分别为查看todo详情和编辑todo详情的截图，
+
+* thinkings中的问题可以回答在该文件夹下的readme.md中
+
+
+
 

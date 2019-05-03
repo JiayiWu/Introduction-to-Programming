@@ -1,0 +1,46 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Class2",
+            "request": "launch",
+            "mainClass": "ClassAndInterface.Class2",
+            "projectName": "task1_ecf8bd6c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Practice",
+            "request": "launch",
+            "mainClass": "Practice",
+            "projectName": "task1_ecf8bd6c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Son",
+            "request": "launch",
+            "mainClass": "Son",
+            "projectName": "task1_ecf8bd6c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BubbleSelectionSort",
+            "request": "launch",
+            "mainClass": "BubbleSelectionSort",
+            "projectName": "task1_ecf8bd6c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BufferedReaderInput",
+            "request": "launch",
+            "mainClass": "BufferedReaderInput",
+            "projectName": "task1_ecf8bd6c"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BufferredReaderInput",
+            "request": "launch",
+            "mainClass": "BufferredReaderInput",
+            "projectName": "task1_ecf8bd6c"
+        }
+    ]
+}
