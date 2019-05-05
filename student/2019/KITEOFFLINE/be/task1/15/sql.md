@@ -30,3 +30,4 @@ select course_id, avg(score) from score group by course_id;
 select course_id, score from score where student_id=1 order by score desc;
 # 11
 select a.name, b.score from student a, score b where a.id=1 and b.student_id=1 and b.course_id=1;
+# 索引练习还没有完成
