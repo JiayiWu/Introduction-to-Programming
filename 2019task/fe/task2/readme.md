@@ -1,6 +1,6 @@
 # Todo (Front End) 
 
-## Iteration II(not done yet)
+## Iteration II(not ready yet, do not start it)
 ### Introduction
 I pick up this from one of your work and decide to make your next mission based on it. I am confused how much work is okay and still an exciting challenge. And this time the work is less complex and mainly to let you know how to interact with backend server.
 
