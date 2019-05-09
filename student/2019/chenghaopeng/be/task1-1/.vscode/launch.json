@@ -1,0 +1,66 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution10",
+            "request": "launch",
+            "mainClass": "Solution10",
+            "projectName": "task1-1_91bf1810"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution9",
+            "request": "launch",
+            "mainClass": "Solution9",
+            "projectName": "task1-1_91bf1810"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution8",
+            "request": "launch",
+            "mainClass": "Solution8"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution7",
+            "request": "launch",
+            "mainClass": "Solution7"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution6",
+            "request": "launch",
+            "mainClass": "Solution6"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution5",
+            "request": "launch",
+            "mainClass": "Solution5"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution4",
+            "request": "launch",
+            "mainClass": "Solution4"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution3",
+            "request": "launch",
+            "mainClass": "Solution3"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution2",
+            "request": "launch",
+            "mainClass": "Solution2"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution1",
+            "request": "launch",
+            "mainClass": "Solution1"
+        }
+    ]
+}
