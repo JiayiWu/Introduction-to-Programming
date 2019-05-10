@@ -191,8 +191,8 @@ class Game {
   }
   
   easyplay(){
-    let nextplace=Math.floor(Math.random()*10/1);
-    while(this.board[nextplace]!=null)nextplace=Math.floor(Math.random()*10/1);
+    let nextplace=Math.floor(Math.random()*9/1);
+    while(this.board[nextplace]!=null)nextplace=Math.floor(Math.random()*9/1);
     return nextplace
   }
   /**

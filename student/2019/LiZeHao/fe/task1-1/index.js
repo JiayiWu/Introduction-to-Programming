@@ -54,6 +54,7 @@ async function main() {
         allwin=Owin+Xwin
         if(Xround==0)Xround++;
         if(Oround==0)Oround++;
+        if(allround==0)allround++;
         console.log(Owin+' win / '+Oround+' round as player O,win rate '+(Owin/Oround*100).toFixed(2)+'%')
         console.log(Xwin+' win / '+Xround+' round as player X,win rate '+(Xwin/Xround*100).toFixed(2)+'%')
         console.log(allwin+' win / '+allround+' round as total,win rate is '+(allwin/allround*100).toFixed(2)+'%')
