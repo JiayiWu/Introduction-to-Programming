@@ -6,7 +6,8 @@ const Sign = require('./enums/Sign')
 
 class Game {
 
-  constructor(player = Sign.O) {
+  constructor(player = Sign.O,mode = 1) {
+    this.usermode=mode
     this.userPlayer = player
     this.aiPlayer = player === Sign.O ? Sign.X : Sign.O
     this.mywin = 0
@@ -168,20 +169,32 @@ class Game {
    * @todo move cursor to where robot place its sign(have done)
    */
   async robotPlay() {
-    const [, nextPos] = this.generateScore()
+   
+    if(this.usermode==1)
+    {const [, nextPos] = this.generateScore()
     this.set(nextPos)
     this.printBoard()
-    this.cursor=nextPos
+    this.cursor=nextPos}
+    else 
+    {const nextPos1 = this.easyplay()
+    this.set(nextPos1)
+    this.printBoard()
+    this.cursor=nextPos1}
   }
 
   clone() {
-    const newGame = new Game(this.userPlayer)
+    const newGame = new Game(this.userPlayer,this.usermode)
     newGame.board = [...this.board]
     newGame.round = this.round
     newGame.nextPlayer = this.nextPlayer
     return newGame
   }
-
+  
+  easyplay(){
+    let nextplace=Math.floor(Math.random()*10/1);
+    while(this.board[nextplace]!=null)nextplace=Math.floor(Math.random()*10/1);
+    return nextplace
+  }
   /**
    * generate score for setting position
    * @see The Minimax Algorithm
