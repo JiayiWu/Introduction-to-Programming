@@ -60,7 +60,9 @@
     explain select * from orders where age<20;
 
    ![](img/1-1.png)
+   
    ![](img/1-2.png)
+   
 ### 使用索引时
 
     CREATE INDEX ageindex on orders(age);
@@ -77,15 +79,21 @@
 
     select * from orders where name LIKE '王%'; 
     EXPLAIN SELECT * FROM orders WHERE name LIKE '王%';
+    
    ![](img/2-1.png)
+   
    ![](img/2-2.png)
+   
 ### 使用索引时
 
     create index nameindex on orders(name);
     select * from orders where name LIKE '王%';
     EXPLAIN SELECT * FROM orders WHERE name LIKE '王%';    
+    
    ![](img/2-3.png)
+   
    ![](img/2-4.png)
+   
  > 使用索引之后，查询的速度变快
  >结论：这个适合使用索引！
 
@@ -96,6 +104,7 @@
     select * from orders where sex='男';
     explain select * from orders where sex='男';
    ![](img/3-1.png)
+   
    ![](img/3-2.png)
 
 ### 使用索引时
@@ -103,8 +112,11 @@
     CREATE index sexindex on orders(sex);
     select * from orders where sex='男';
     explain select * from orders where sex='男';    
+    
    ![](img/3-3.png)
+   
    ![](img/3-4.png)
+   
  > 使用索引之后，查询的速度与没有使用索引差不多，但是创建索引花了较多时间，而且如果对表做出修改，对应索引文件还要再修改，麻烦且浪费资源。
  >结论：这个不适合使用索引。。
 ## 问题4:在 orders 表中计算女性,姓张,年龄大于50,且消费小于100的人数。 
@@ -112,16 +124,22 @@
 
     select count(*) from orders where sex='女' and name like '张%' and age>50 and amount<100;
     explain select count(*) from orders where sex='女' and name like '张%' and age>50 and amount<100;
+    
    ![](img/4-1.png)
+   
    ![](img/4-2.png)
+  
 
 ### 使用索引时
 
     CREATE index ind on orders(sex, name, age, amount);
     select count(*) from orders where sex='女' and name like '张%' and age>50 and amount<100;
     explain select count(*) from orders where sex='女' and name like '张%' and age>50 and amount<100; 
+    
    ![](img/4-3.png)
+   
    ![](img/4-4.png)
+   
  > 使用索引之后，查询的速度确实快了许多。但是建立这个多列索引也花了不少时间。
  >结论：应该适合吧，（如果不用经常改这个表）
 ## 问题5:统计 orders 表中姓名为三个字的人数。 
@@ -129,15 +147,21 @@
 
     select count(*) from practice.orders where name like '___';
     explain select count(*) from practice.orders where name like '___';
+    
    ![](img/5-1.png)
+   
    ![](img/5-2.png)
+   
 ### 使用索引时
 
     create INDEX nameindex on orders(name);
     select count(*) from practice.orders where name like '___';
     explain select count(*) from practice.orders where name like '___';    
+    
    ![](img/5-3.png)
+   
    ![](img/5-4.png)
+   
  > 使用索引之后，查询的速度更快了。
  >有两个奇怪的地方
  1. 我在sqlbench里面看orders有1000条数据，但是使用count(*)查，却有5000000条
@@ -149,15 +173,21 @@
 
     select * from products WHERE nums>150;
     explain select * from products WHERE nums>150;
+    
    ![](img/6-1.png)
+   
    ![](img/6-2.png)
+   
 ### 使用索引时
 
     alter table products add index numsindex(nums);
     select * from products WHERE nums>150;
-    explain select * from products WHERE nums>150;    
+    explain select * from products WHERE nums>150;   
+    
    ![](img/6-3.png)
+   
    ![](img/6-4.png)
+   
  > 使用索引之后，查询的速度与没有使用索引差不多，但是创建索引花了较多时间，而且如果对表做出修改，对应索引文件还要再修改，麻烦且浪费资源。
  >结论：这个不适合使用索引。。
 
