@@ -1,7 +1,7 @@
 const readline = require('readline')
 const clear = require('clear')
 const chalk = require('chalk')
-
+const recorder=require('./Recorder')
 const Sign = require('./enums/Sign')
 
 class Game {
@@ -9,10 +9,12 @@ class Game {
   constructor(player = Sign.O) {
     this.userPlayer = player
     this.aiPlayer = player === Sign.O ? Sign.X : Sign.O
-    
+    this.mywin = 0
+    this.allround = 0 
     this.nextPlayer = Sign.O
     this.round = 0
     this.isEnd = false
+    this.win = Array(9).fill(0)
     this.board = Array(9).fill(null)
     this.cursor = 4
   }
@@ -40,19 +42,23 @@ class Game {
      * XOX
      * OO
      * XO
-     * you show color index 1,4,7 in orange to indicate that these three makes player O as winner
+     * you show color index 1,4,7 in orange to indicate that these three makes player O as winner(have done)
      */
+    //我用了白色= =因为chalk里没有橙色
     const winner = this.checkWinner()
+    
     if (winner || this.round === 9) {
       this.isEnd = true
       if (winner) {
         /**
-         * @todo judge who wins and log it
+         * @todo judge who wins(have done) and log it
          */
-        if(winner==Sign.O&&this.userPlayer==Sign.O)console.log('you win')
-        else if(winner==Sign.X&&this.userPlayer==Sign.X)console.log('you win')
-        else console.log('you lose')
+        //0是平局 1是O赢 2是O输 3是X赢 4是X输 
+        if(winner==Sign.O&&this.userPlayer==Sign.O){this.printBoard();this.mywin=this.mywin+1;this.allround =this.allround+1;recorder.save(1);console.log('you win');}
+        else if(winner==Sign.X&&this.userPlayer==Sign.X){this.printBoard();this.mywin=this.mywin+1;this.allround =this.allround+1;recorder.save(3);console.log('you win');}
+        else {this.printBoard();this.allround =this.allroun+1;console.log('you lose');if(this.userPlayer==Sign.O)recorder.save(2);else recorder.save(4);}
       } else {
+        recorder.save(0);
         console.log('A draw.')
       }
     }
@@ -60,33 +66,33 @@ class Game {
 
   /**
    * @todo return the winner Sign.O or Sign.X or null
-   * before it is implemented, the game will not run well
+   * before it is implemented, the game will not run well(have done)
    */
   checkWinner() {
   //行
-  if(this.board[0]==this.board[1]&&this.board[1]==this.board[2]&&this.board[0]==Sign.O)return Sign.O;
-  if(this.board[3]==this.board[4]&&this.board[4]==this.board[5]&&this.board[3]==Sign.O)return Sign.O;
-  if(this.board[6]==this.board[7]&&this.board[7]==this.board[8]&&this.board[6]==Sign.O)return Sign.O;
+  if(this.board[0]==this.board[1]&&this.board[1]==this.board[2]&&this.board[0]==Sign.O){this.win[0]=1;this.win[1]=1;this.win[2]=1;return Sign.O;}
+  if(this.board[3]==this.board[4]&&this.board[4]==this.board[5]&&this.board[3]==Sign.O){this.win[3]=1;this.win[4]=1;this.win[5]=1;return Sign.O;}
+  if(this.board[6]==this.board[7]&&this.board[7]==this.board[8]&&this.board[6]==Sign.O){this.win[6]=1;this.win[7]=1;this.win[8]=1;return Sign.O;}
 
-  if(this.board[0]==this.board[1]&&this.board[1]==this.board[2]&&this.board[0]==Sign.X)return Sign.X;
-  if(this.board[3]==this.board[4]&&this.board[4]==this.board[5]&&this.board[3]==Sign.X)return Sign.X;
-  if(this.board[6]==this.board[7]&&this.board[7]==this.board[8]&&this.board[6]==Sign.X)return Sign.X;
+  if(this.board[0]==this.board[1]&&this.board[1]==this.board[2]&&this.board[0]==Sign.X){this.win[0]=1;this.win[1]=1;this.win[2]=1;return Sign.X;}
+  if(this.board[3]==this.board[4]&&this.board[4]==this.board[5]&&this.board[3]==Sign.X){this.win[3]=1;this.win[4]=1;this.win[5]=1;return Sign.X;}
+  if(this.board[6]==this.board[7]&&this.board[7]==this.board[8]&&this.board[6]==Sign.X){this.win[6]=1;this.win[7]=1;this.win[8]=1;return Sign.X;}
   //列
-  if(this.board[0]==this.board[3]&&this.board[6]==this.board[3]&&this.board[0]==Sign.O)return Sign.O;
-  if(this.board[1]==this.board[4]&&this.board[4]==this.board[7]&&this.board[1]==Sign.O)return Sign.O;
-  if(this.board[2]==this.board[5]&&this.board[5]==this.board[8]&&this.board[2]==Sign.O)return Sign.O;
+  if(this.board[0]==this.board[3]&&this.board[6]==this.board[3]&&this.board[0]==Sign.O){this.win[0]=1;this.win[3]=1;this.win[6]=1;return Sign.O;}
+  if(this.board[1]==this.board[4]&&this.board[4]==this.board[7]&&this.board[1]==Sign.O){this.win[1]=1;this.win[4]=1;this.win[7]=1;return Sign.O;}
+  if(this.board[2]==this.board[5]&&this.board[5]==this.board[8]&&this.board[2]==Sign.O){this.win[2]=1;this.win[5]=1;this.win[8]=1;return Sign.O;}
 
-  if(this.board[0]==this.board[3]&&this.board[3]==this.board[6]&&this.board[0]==Sign.X)return Sign.X;
-  if(this.board[1]==this.board[4]&&this.board[4]==this.board[7]&&this.board[1]==Sign.X)return Sign.X;
-  if(this.board[2]==this.board[5]&&this.board[5]==this.board[8]&&this.board[2]==Sign.X)return Sign.X;
+  if(this.board[0]==this.board[3]&&this.board[3]==this.board[6]&&this.board[0]==Sign.X){this.win[0]=1;this.win[3]=1;this.win[6]=1;return Sign.X;}
+  if(this.board[1]==this.board[4]&&this.board[4]==this.board[7]&&this.board[1]==Sign.X){this.win[1]=1;this.win[4]=1;this.win[7]=1;return Sign.X;}
+  if(this.board[2]==this.board[5]&&this.board[5]==this.board[8]&&this.board[2]==Sign.X){this.win[2]=1;this.win[5]=1;this.win[8]=1;return Sign.X;}
   //对角线
-  if(this.board[0]==this.board[4]&&this.board[4]==this.board[8]&&this.board[0]==Sign.O)return Sign.O;
-  if(this.board[2]==this.board[4]&&this.board[4]==this.board[6]&&this.board[2]==Sign.O)return Sign.O;
+  if(this.board[0]==this.board[4]&&this.board[4]==this.board[8]&&this.board[0]==Sign.O){this.win[0]=1;this.win[4]=1;this.win[8]=1;return Sign.O;}
+  if(this.board[2]==this.board[4]&&this.board[4]==this.board[6]&&this.board[2]==Sign.O){this.win[2]=1;this.win[4]=1;this.win[6]=1;return Sign.O;}
 
-  if(this.board[0]==this.board[4]&&this.board[4]==this.board[8]&&this.board[0]==Sign.X)return Sign.X;
-  if(this.board[2]==this.board[4]&&this.board[4]==this.board[6]&&this.board[2]==Sign.X)return Sign.X;
+  if(this.board[0]==this.board[4]&&this.board[4]==this.board[8]&&this.board[0]==Sign.X){this.win[0]=1;this.win[4]=1;this.win[8]=1;return Sign.X;}
+  if(this.board[2]==this.board[4]&&this.board[4]==this.board[6]&&this.board[2]==Sign.X){this.win[2]=1;this.win[4]=1;this.win[6]=1;return Sign.X;}
   
-  if(this.round!=9)return 0;
+  return 0;
   }
 
   printBoard() {
@@ -97,7 +103,8 @@ class Game {
       if (cur == null) {
         str += this.cursor === i ? chalk.yellow('_') : ''
       } else {
-        str += this.cursor === i ? chalk.yellow(cur) : cur === this.userPlayer ? chalk.green(cur) : chalk.red(cur) 
+      if(this.win[i]==0)str += this.cursor === i ? chalk.yellow(cur) : cur === this.userPlayer ? chalk.green(cur) : chalk.red(cur) 
+      else {str += chalk.white(cur);}
       }
       str += '\t'
       if (i % 3 === 2 && i != 8) {
@@ -158,12 +165,13 @@ class Game {
   }
 
   /**
-   * @todo move cursor to where robot place its sign
+   * @todo move cursor to where robot place its sign(have done)
    */
   async robotPlay() {
     const [, nextPos] = this.generateScore()
     this.set(nextPos)
     this.printBoard()
+    this.cursor=nextPos
   }
 
   clone() {
