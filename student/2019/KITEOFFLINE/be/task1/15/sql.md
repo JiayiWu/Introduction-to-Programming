@@ -80,9 +80,9 @@
     select * from orders where name LIKE '王%'; 
     EXPLAIN SELECT * FROM orders WHERE name LIKE '王%';
     
-   ![](img/2-1.png)
+   ![](img/2-1.PNG)
    
-   ![](img/2-2.png)
+   ![](img/2-2.PNG)
    
 ### 使用索引时
 
@@ -90,9 +90,9 @@
     select * from orders where name LIKE '王%';
     EXPLAIN SELECT * FROM orders WHERE name LIKE '王%';    
     
-   ![](img/2-3.png)
+   ![](img/2-3.PNG)
    
-   ![](img/2-4.png)
+   ![](img/2-4.PNG)
    
  > 使用索引之后，查询的速度变快
  >结论：这个适合使用索引！
@@ -103,9 +103,9 @@
 
     select * from orders where sex='男';
     explain select * from orders where sex='男';
-   ![](img/3-1.png)
+   ![](img/3-1.PNG)
    
-   ![](img/3-2.png)
+   ![](img/3-2.PNG)
 
 ### 使用索引时
 
@@ -113,9 +113,9 @@
     select * from orders where sex='男';
     explain select * from orders where sex='男';    
     
-   ![](img/3-3.png)
+   ![](img/3-3.PNG)
    
-   ![](img/3-4.png)
+   ![](img/3-4.PNG)
    
  > 使用索引之后，查询的速度与没有使用索引差不多，但是创建索引花了较多时间，而且如果对表做出修改，对应索引文件还要再修改，麻烦且浪费资源。
  >结论：这个不适合使用索引。。
@@ -125,9 +125,9 @@
     select count(*) from orders where sex='女' and name like '张%' and age>50 and amount<100;
     explain select count(*) from orders where sex='女' and name like '张%' and age>50 and amount<100;
     
-   ![](img/4-1.png)
+   ![](img/4-1.PNG)
    
-   ![](img/4-2.png)
+   ![](img/4-2.PNG)
   
 
 ### 使用索引时
@@ -136,9 +136,9 @@
     select count(*) from orders where sex='女' and name like '张%' and age>50 and amount<100;
     explain select count(*) from orders where sex='女' and name like '张%' and age>50 and amount<100; 
     
-   ![](img/4-3.png)
+   ![](img/4-3.PNG)
    
-   ![](img/4-4.png)
+   ![](img/4-4.PNG)
    
  > 使用索引之后，查询的速度确实快了许多。但是建立这个多列索引也花了不少时间。
  >结论：应该适合吧，（如果不用经常改这个表）
@@ -148,9 +148,9 @@
     select count(*) from practice.orders where name like '___';
     explain select count(*) from practice.orders where name like '___';
     
-   ![](img/5-1.png)
+   ![](img/5-1.PNG)
    
-   ![](img/5-2.png)
+   ![](img/5-2.PNG)
    
 ### 使用索引时
 
@@ -158,9 +158,9 @@
     select count(*) from practice.orders where name like '___';
     explain select count(*) from practice.orders where name like '___';    
     
-   ![](img/5-3.png)
+   ![](img/5-3.PNG)
    
-   ![](img/5-4.png)
+   ![](img/5-4.PNG)
    
  > 使用索引之后，查询的速度更快了。
  >有两个奇怪的地方
@@ -174,9 +174,9 @@
     select * from products WHERE nums>150;
     explain select * from products WHERE nums>150;
     
-   ![](img/6-1.png)
+   ![](img/6-1.PNG)
    
-   ![](img/6-2.png)
+   ![](img/6-2.PNG)
    
 ### 使用索引时
 
@@ -184,9 +184,9 @@
     select * from products WHERE nums>150;
     explain select * from products WHERE nums>150;   
     
-   ![](img/6-3.png)
+   ![](img/6-3.PNG)
    
-   ![](img/6-4.png)
+   ![](img/6-4.PNG)
    
  > 使用索引之后，查询的速度与没有使用索引差不多，但是创建索引花了较多时间，而且如果对表做出修改，对应索引文件还要再修改，麻烦且浪费资源。
  >结论：这个不适合使用索引。。
