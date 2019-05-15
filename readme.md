@@ -20,6 +20,7 @@ coach团队
 * 181250201
 * leonzr
 * GDLOrigin
+* zhouhan760503
 
 技术选型
 ==== 
@@ -87,6 +88,9 @@ Task2
 
 * thinkings中的问题可以回答在该文件夹下的readme.md中
 
+Task2-1
+==== 
 
-
-
+迭代二打算前后端配合完成，但是目前后端人数较多，所以又重新选了一批同学参加前端，先给这部分同学布置了一些小task，等他们完成后再从中筛选出一些同学继续参加。因此目前把迭代二推迟了一阵。为了不让原先参加的同学等待，临时给原先参加的同学布置了一些额外的练习。  
+[后端任务地址Task1-1](https://github.com/JiayiWu/Introduction-to-Programming/tree/master/2019task/be/task1-1)  
+[前端任务地址Task1-1](https://github.com/JiayiWu/Introduction-to-Programming/tree/master/2019task/fe/task1-1)
