@@ -8,7 +8,7 @@ class LoginModal extends Component {
       <div class="ModalWrapper">
         <div class="Modal">
           <header><span>T</span>odo</header>
-          <form id="form">
+          <form id="loginForm">
             <div><label>邮箱</label><div><input name="email"/></div></div>
             <div><label>密码</label><div><input name="password" type="password"/></div></div>
             ${data.isRegister ? `<div><label>确认密码</label><div><input name="repassword" type="password"/></div></div>` : ''}

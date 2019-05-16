@@ -1,5 +1,5 @@
 import Controller from "../libs/Controller.js";
-import m_axios from '../libs/fetch.js'
+import Request from '../libs/Request.js'
 
 class UserController extends Controller {
   switchMode() {
@@ -9,7 +9,7 @@ class UserController extends Controller {
     }))
   }
   async register() {
-    const form = document.getElementById('form')
+    const form = document.getElementById('loginForm')
     const formInputs = [...form.getElementsByTagName('input')]
     let formData = {}
     formInputs.forEach((input) => {
@@ -17,10 +17,10 @@ class UserController extends Controller {
       formData[name] = input.value
     })
     if (formData['password'] !== formData['repassword']) {
-      // 提示错误信息并返回
+      alert('两次输入密码不一致！')
       return
     }
-    const response = await m_axios.post('/user/account', {
+    const response = await Request.post('/user/account', {
       body: JSON.stringify({
         email: formData.email,
         password: formData.password
@@ -28,8 +28,9 @@ class UserController extends Controller {
     })
     if (response.code === 200) {
       console.log('regist success')
+      // 成功后处理
     } else {
-      // 提示错误信息
+      alert(response.code)
     }
     return
   }
