@@ -10,11 +10,6 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 var serverOrigin = "http://notebook.fivedreamer.com";
-/**
- *
- * @param {string} url
- * @param {Object} queryParams
- */
 var getRequestUrl = function (url, queryParams) {
     var requestUrl = serverOrigin + url;
     if (queryParams) {
@@ -27,7 +22,6 @@ var getRequestUrl = function (url, queryParams) {
     }
     return requestUrl;
 };
-// 默认包含cookie，content-type为json
 var defaultInit = {
     credentials: 'include',
     headers: {
@@ -36,33 +30,18 @@ var defaultInit = {
     },
     method: 'GET'
 };
-/**
- * @param {string} url
- * @param {FetchOption} options
- */
 function myFetch(url, options) {
     var queryParams = options.queryParams, headers = options.headers;
     var requestUrl = getRequestUrl(url, queryParams);
     var f_headers = __assign({ 'Content-Type': 'application/json' }, headers);
     return fetch(requestUrl, __assign({}, defaultInit, options, f_headers));
 }
-/**
- *
- * @param {string} url
- * @param {GetOption} config
- */
 function get(url, config) {
     return myFetch(url, __assign({ method: 'GET' }, config));
 }
-/**
- *
- * @param {string} url
- * @param {PostOption} config
- */
 function post(url, config) {
     return myFetch(url, __assign({ method: 'POST' }, config));
 }
-// }
 export default {
     request: myFetch,
     get: get,
