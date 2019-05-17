@@ -15,3 +15,8 @@ const userController = new UserController('UserController', model)
 const todoList = new TodoList(document.querySelector('#TodoList'), model)
 const todoDetail = new TodoDetail(document.querySelector('#TodoDetail'), model)
 const loginModal = new LoginModal(document.querySelector('#LoginModal'), model)
+
+export {
+  todoController,
+  userController
+}

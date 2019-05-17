@@ -1,32 +1,23 @@
-/**
- * @typedef { Object } InitOption
- * @property { Object } headers
- * @property { "navigate" | "same-origin" | "no-cors" | "cors" } mode
- * @property { "omit" | "same-origin" | "include" } credentials
- * @property { "default" | "no-store" | "reload" | "no-cache" | "force-cache" | "only-if-cached" } cache
- * @property { "follow" | "error" | "manual" } redirect
- */
-
  /**
   * @typedef { Object } FetchExpand
   * @property { Object } queryParams
   * @property { Object } body
   * 
-  * @typedef { InitOption & FetchExpand } FetchOption
+  * @typedef { RequestInit & FetchExpand } FetchOption
   */
 
 /**
  * @typedef { Object } GetExpand
  * @property { Object } queryParams
  * 
- * @typedef { InitOption & GetExpand } GetOption
+ * @typedef { RequestInit & GetExpand } GetOption
  */
 
 /**
  * @typedef { Object } PostExpand
  * @property { Object } body 
  * 
- * @typedef { InitOption & PostExpand } PostOption
+ * @typedef { RequestInit & PostExpand } PostOption
  */
 
 const serverOrigin = "http://notebook.fivedreamer.com"
@@ -34,7 +25,7 @@ const serverOrigin = "http://notebook.fivedreamer.com"
 /**
  * 
  * @param { string } url
- * @param { Object } queryParams 
+ * @param { object } queryParams 
  */
 const getRequestUrl = (url, queryParams) => {
   let requestUrl = serverOrigin + url
@@ -61,7 +52,7 @@ const defaultInit = {
 
 /**
  * @param { string } url
- * @param { FetchOption } options
+ * @param { RequestInit } options
  */
 function myFetch(url, options) {
   const {
@@ -76,7 +67,7 @@ function myFetch(url, options) {
     ...defaultInit,
     ...options,
     ...f_headers
-  })
+  }).then(res => res.json())
 }
 
   /**
@@ -106,9 +97,9 @@ function myFetch(url, options) {
  * @typedef { Object } Request
  * @property {(url: string, option: FetchOption) => any} request
  */
-const request = {
+const Request = {
   request: myFetch,
   get,
   post,
 }
-export default request
+export default Request

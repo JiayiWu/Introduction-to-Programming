@@ -1,23 +1,16 @@
 
-declare interface InitOption {
-  headers?: HeadersInit,
-  mode?: RequestMode,
-  credentials?: RequestCredentials,
-  cache?: RequestCache,
-  redirect?: RequestRedirect,
+declare interface QueryParams {
+  queryParams?: object
 }
+declare type RequestOptions = QueryParams & RequestInit
 
-declare interface FetchOption extends InitOption {
-  method: string,
-  queryParams?: Object, /* GET 参数 */
-  body?: BodyInit, /* POST body */
-  
+declare type Response = {
+  code: number,
+  data: any
 }
-
-declare interface GetOption extends InitOption {
-  queryParams?: Object,
+declare namespace Request {
+  export function request(url: string, options: RequestOptions) : Response
+  export function get(url: string, options: RequestOptions) : Response
+  export function post(url: string, options: RequestOptions) : Response
 }
-
-declare interface PostOption extends InitOption {
-  body?: BodyInit
-}
+export default Request
