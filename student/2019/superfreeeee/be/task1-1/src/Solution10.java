@@ -19,21 +19,33 @@ public class Solution10 {
     deep++;
     if(countBlank(field) == 0)
       return true;
-    fillUnique(field);
     for(int i=0 ; i<9 ; i++)
       for(int j=0 ; j<9 ; j++)
         if(isBlank(field, i, j)){
           for(int num=1 ; num<=9 ; num++){
             if(isAvalible(field, i, j, num)){
+              // System.out.println("before");
+              // print(field);
+              // int[][] temp = deepClone(field);
               field[i][j] = num;
+              // fillUnique(field);
               if(loop(field))
                 return true;
               field[i][j] = 0;
+              // System.out.println("after");
+              // print(field);
             }
           }
           return false;
         }
     return true;
+  }
+  public int[][] deepClone(int[][] field){
+    int[][] temp = new int[9][9];
+    for(int i=0 ; i<9 ; i++){
+      temp[i] = field[i].clone();
+    }
+    return temp;
   }
   public void fillUnique(int[][] field){
     boolean changed = true;
