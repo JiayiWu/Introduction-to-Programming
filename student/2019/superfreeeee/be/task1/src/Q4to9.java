@@ -94,6 +94,7 @@ public class Q4to9{
         while((c = f.read()) != -1){  // 读到底返回-1
           string.append((char)c);
         }
+        System.out.println(string);
       }catch(Exception e){
         // 
         e.printStackTrace();
