@@ -25,11 +25,12 @@ class UserController extends Controller {
     const response = await Request.post('/user/account', {
       body: JSON.stringify({
         email: formData.email,
-        password: formData.password
+        password: formData.password,
+        name: formData.email
       }),
     })
     // 注册成功的判定由前后端商议
-    if (response.code === 200) {
+    if (response.code === 0) {
       console.log('register success')
       // 提示注册成功并且跳转到登录，也可以做成注册后自动登录
     } else {
