@@ -95,6 +95,11 @@ Task2-1
 [后端任务地址Task1-1](https://github.com/JiayiWu/Introduction-to-Programming/tree/master/2019task/be/task1-1)  
 [前端任务地址Task1-1](https://github.com/JiayiWu/Introduction-to-Programming/tree/master/2019task/fe/task1-1)
 
-新选入了几个同学。同时孩子们反映节奏太紧密，先给孩子们放几天假。
+Task3
 ==== 
+
+6月4号到6月28号，时间很充裕，中期检查时间是6月16日。  
+中期检查需要提交任何你可以提交的，包括学习成果，部分项目代码等。  
+6月28日提交所有的完成品。  
+*可选的是  欢迎在服务器上部署好后直接发网站给我们。注意，这个是可选，不是必须。*
 
