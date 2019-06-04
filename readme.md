@@ -9,18 +9,22 @@ coach团队
 面向南京大学软件学院新入学的同学
 ==== 
 第一批同学[2018年入学]（Github名称）
-* chenghaopeng
-* guolihua
-* stormbroken
-* ronglai
-* lihaotian1020
-* AveryHandsomeBoy
-* yuchenyang19
+* LiZeHao  
+* zhouhan 
+* herb1999 
+* goldenfingergreenhandblackheart 
+* SnowdinTown
+* WeiRongLai 
 * KITEOFFLINE
-* 181250201
-* leonzr
-* GDLOrigin
-* zhouhan760503
+* QinRuixin
+* garyGlh
+* lihaotian1020
+* stormbroken
+* superfreeeee
+* yuchenyang19
+* chenghaopeng
+
+
 
 技术选型
 ==== 
@@ -61,14 +65,14 @@ https://github.com/JiayiWu/TravelWebsites/tree/master/server
 整体运行地址  
 http://travel.fivedreamer.com/workspace/activity  
 
-Task1(2019.03.23--2019.03.31)
+Task0(2019.03.23--2019.03.31)
 ==== 
 Step1  
 了解基本版本控制概念、Git操作指令（通过写markdown文件放到个人目录下），在../student/2019创建一个以自己Github名称的文件夹  
 Step2  
 通过上面提供的前后端学习路径来了解前后端知识，多去尝试，搭建一些小的Demo（Demo可以放在以自己名字建的目录下面），选定自己喜欢的技术栈，记录自己的学习探索历程并说说自己选择该技术栈的原因以及一些认识（通过写markdown文件放到个人目录下）  
 
-Task2
+Task1
 ==== 
 **前后端总体任务都是一个月，目前分成两部分，每一部分按两周计算，请同学们先完成后端任务Task1和前端任务迭代1**
 
@@ -88,16 +92,17 @@ Task2
 
 * thinkings中的问题可以回答在该文件夹下的readme.md中
 
-Task2-1
+Task1-1
 ==== 
 
 迭代二打算前后端配合完成，但是目前后端人数较多，所以又重新选了一批同学参加前端，先给这部分同学布置了一些小task，等他们完成后再从中筛选出一些同学继续参加。因此目前把迭代二推迟了一阵。为了不让原先参加的同学等待，临时给原先参加的同学布置了一些额外的练习。  
 [后端任务地址Task1-1](https://github.com/JiayiWu/Introduction-to-Programming/tree/master/2019task/be/task1-1)  
 [前端任务地址Task1-1](https://github.com/JiayiWu/Introduction-to-Programming/tree/master/2019task/fe/task1-1)
 
-Task3
-==== 
+Task2(2019.06.04--2019.06.28)
+====   
 
+[第二迭代任务地址](https://github.com/JiayiWu/Introduction-to-Programming/tree/master/2019task/task2)  
 6月4号到6月28号，时间很充裕，中期检查时间是6月16日。  
 中期检查需要提交任何你可以提交的，包括学习成果，部分项目代码等。  
 6月28日提交所有的完成品。  
