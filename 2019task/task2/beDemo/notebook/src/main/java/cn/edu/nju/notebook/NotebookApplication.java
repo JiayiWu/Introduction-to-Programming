@@ -12,8 +12,6 @@ public class NotebookApplication {
 
 	public static void main(String[] args)
 	{
-		Socket socket = new Socket();
-		socket.connect();
 		SpringApplication.run(NotebookApplication.class, args);
 	}
 
