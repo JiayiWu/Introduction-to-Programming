@@ -32,7 +32,7 @@ public class FileController {
     @ApiOperation(value = "上传文件", response = SimpleResponse.class,notes = "返回上传文件后文件指定的路径")
     @PostMapping("/upload")
     public SimpleResponse handleFileUpload(HttpSession session, @RequestParam("file") MultipartFile file) {
-        if(session.getAttribute("userId") == null){
+          if(session.getAttribute("user") == null){
             return SimpleResponse.error("Not login");
         }
 
