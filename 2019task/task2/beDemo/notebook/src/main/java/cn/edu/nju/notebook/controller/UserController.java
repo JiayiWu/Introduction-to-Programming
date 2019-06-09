@@ -28,9 +28,11 @@ public class UserController {
     @PostMapping("account")
     public SimpleResponse register(HttpSession session, @RequestBody UserForm userForm){
         UserEntity userEntity = null;
-        try {
-           userEntity =  userService.createUser(userForm);
-        }catch (Exception e){
+          try {
+            userEntity = userService.createUser(userForm);
+        } catch (ServerException serverException) {
+            return SimpleResponse.error(serverException);
+        } catch (Exception e) {
             e.printStackTrace();
             return SimpleResponse.error("Create user error");
         }
