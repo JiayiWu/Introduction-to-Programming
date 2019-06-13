@@ -1,0 +1,271 @@
+* {
+  box-sizing: border-box;
+  font-family: arial, "Hiragino Sans GB", "Microsoft Yahei", 微软雅黑, Tahoma, Helvetica, STHeiti;
+}
+
+ol {
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+input, button {
+  outline: none;
+}
+
+html {
+
+}
+
+body {
+  background: #eaeaea;
+  margin: 0;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  padding: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main > div {
+  height: 100%;
+  box-shadow: 1px 1px 12px 2px rgba(0,0,0,0.15);
+  background-color: #fff;
+  border-radius: 1vh;
+}
+
+main > #TodoList {
+  flex: 3 3 30%;
+  margin-right: 6vh;
+  overflow: hidden;
+}
+
+main > #TodoDetail {
+  flex: 7 7 70%;
+  overflow: hidden;
+}
+
+#TodoList > header, #TodoDetail > header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#TodoList > ol, #TodoDetail > .details {
+  height: calc(100% - 100px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#TodoList > ol::-webkit-scrollbar,
+#TodoDetail > .details::-webkit-scrollbar {
+  width: 5px;
+}
+
+#TodoList > ol::-webkit-scrollbar-thumb,
+#TodoDetail > .details::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.2);
+}
+
+#TodoList > ol::-webkit-scrollbar-track,
+#TodoDetail > .details::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  border-radius: 0;
+  background: rgba(0,0,0,0.1);
+}
+
+#TodoList > footer, #TodoDetail > footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.todo {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  height: 114px;
+}
+.todo.active {
+  background-color: #eaeaea;
+  cursor: default;
+}
+.todo:not(:last-of-type) {
+  border-bottom: 1px dashed #ccc;
+}
+
+.todo > div:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 20px 20px 0 20px;
+}
+
+.todo > div:first-of-type > .title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.todo > div:first-of-type > .time {
+  color: #999;
+  white-space: nowrap;
+}
+
+.todo > div:last-of-type {
+  margin: 10px 20px 20px 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  color: #999;
+  font-size: 14px;
+}
+
+#TodoDetail > .details {
+  padding: 0 20px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
+  align-items: baseline;
+}
+
+.detail > p {
+  margin: 0px 10px;
+}
+
+.detail > .itemkey {
+  background-color: rgba(0, 0, 0, .5);
+  color: white;
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+
+.detail > .itemvalue {
+
+}
+
+.detail > input {
+  width: 100%;
+  font-size: 16px;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: rgba(0, 0, 0, .5);
+}
+
+.detail > .EditText {
+  padding: 5px 8px;
+}
+
+.detail > .EditDateTime {
+  padding: 1px 8px;
+}
+
+.detail > .EditTextArea {
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: rgba(0, 0, 0, .5);
+  width: 100%;
+  height: 300px;
+  font-size: 16px;
+  padding: 5px 8px;
+}
+
+
+
+
+#LoginModal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 8;
+}
+
+#LoginModal > .ModalWrapper {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#LoginModal .Modal {
+  box-shadow: 1px 1px 12px 2px rgba(0,0,0,0.15);
+  background-color: #fff;
+  border-radius: 1vh;
+  overflow: hidden;
+}
+#LoginModal header {
+  font-size: 32px;
+  letter-spacing: 5px;
+  color: #222;
+  padding-top: 40px;
+  text-align: center;
+}
+#LoginModal header span {
+  color: #fff;
+  background: #222;
+  font-weight: 500;
+  padding-left: 2px;
+  margin-right: 2px;
+
+}
+
+#LoginModal form {
+  padding: 24px 60px;
+}
+
+#LoginModal form > div {
+  display: flex;
+  line-height: 32px;
+  margin-bottom: 8px;
+}
+
+#LoginModal form label {
+  width: 84px;
+}
+
+#LoginModal form input {
+  height: 32px;
+  width: 200px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  padding: 0 8px;
+  color: #222;
+}
+#LoginModal footer {
+  display: flex;
+}
+#LoginModal footer > button {
+  width: 50%;
+  height: 48px;
+  font-size: 14px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+#LoginModal footer > button:hover {
+  background-color: #eee;
+}
+#LoginModal footer > button:active {
+  background-color: #ddd;
+}

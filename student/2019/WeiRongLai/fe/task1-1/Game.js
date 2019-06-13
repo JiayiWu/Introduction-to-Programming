@@ -57,11 +57,11 @@ class Game {
         /**
          * @todo judge who wins and log it
          */
-        sign.forEach(element => {
-          this.board[element]=chalk.blue(winner)
-        });
-        clear();
-        this.printBoard();
+        // sign.forEach(element => {
+        //   this.board[element]=chalk.blue(winner)
+        // });
+        // clear();
+        // this.printBoard();
         if(winner===this.aiPlayer){
           console.log("You lose.");
         }else{
@@ -128,8 +128,14 @@ class Game {
   printBoard() {
     clear()
     let str = ''
+    let [winner,sign]=this.checkWinner();
+    if(winner){
+      sign.forEach(element => {
+        this.board[element]=chalk.blue(winner);
+      });
+    }
     for (let i = 0; i < 9; i++) {
-      const cur = this.board[i]
+      const cur = this.board[i];
       //通过光标内容打印
       if (cur == null) {
         str += this.cursor === i ? chalk.yellow('_') : ''

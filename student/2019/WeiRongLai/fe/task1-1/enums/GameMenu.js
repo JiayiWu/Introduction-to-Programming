@@ -4,7 +4,8 @@ const GameMenu = {
   PlayAsX: 'play as X',
   Record: 'show record',
   End: 'end',
-  Mode:["hard","easy"]
+  HardMode:'HardMode',
+  EasyMode:'EasyMode'
 }
 
 module.exports = GameMenu

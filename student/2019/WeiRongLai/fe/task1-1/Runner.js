@@ -14,32 +14,25 @@ const Runner = {
         name: 'action',
         type: 'list',
         message: 'mode:',
-        choices: [GameMenu.Mode[0],GameMenu.Mode[1]]
+        choices: [GameMenu.HardMode,GameMenu.EasyMode]
       }])
+      let aGame;
       switch(action){
-        case GameMenu.Mode[0]:
-        const hardGame = new Game(player)
-        //每走一步，判断是否结束
-        while (true) {
-          await hardGame.next()
-          if (hardGame.isEnd) {
-            break
-          }
-        }
+        case GameMenu.HardMode:
+        aGame = new Game(player);
         break;
-        case GameMenu.Mode[1]:
-        const easyGame = new EasyGame(player)
-        //每走一步，判断是否结束
-        while(true){
-          await easyGame.next()
-          if(easyGame.isEnd){
-            break
-          }
-        }
+        case GameMenu.EasyMode:
+        aGame = new easyGame(player);
         break;
         default:
         break;
       }
+      while(true){
+          await aGame.next()
+          if(aGame.isEnd){
+            break
+          }
+        }
   },
 }
 
