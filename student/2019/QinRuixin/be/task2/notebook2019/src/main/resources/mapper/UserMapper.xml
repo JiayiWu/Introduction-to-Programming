@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.notebook2019.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.example.notebook2019.entity.UserEntity">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="email" jdbcType="LONGVARCHAR" property="email"/>
+        <result column="logo_url" jdbcType="LONGVARCHAR" property="logoUrl"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,password
+    </sql>
+    <sql id="Blob_Column_List">
+        email,logo_url
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.example.notebook2019.entity.UserEntity">
+        insert into user (id,name,password,email,logo_url)
+        values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},
+        #{email,jdbcType=LONGVARCHAR},#{logoUrl,jdbcType=LONGVARCHAR})
+    </insert>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        ,
+        <include refid="Blob_Column_List"></include>
+        from user
+        where id=#{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from user
+        where email=#{email,jdbcType=LONGVARCHAR}
+    </select>
+
+</mapper>
