@@ -14,6 +14,7 @@ fetch('http://example.com/movies.json')
 #### Q2:Callback and promise, which is preferred when it comes to async operation?
 A2：Callback、Promise、async/await的对比如下图所示
 ![](https://pic1.zhimg.com/80/v2-be8f674422c9f30ffeaee88477ad2c84_hd.png)
+
 我认为Promise会更好一些。callback来控制异步的方式虽然非常简单，但也过于原始。在实际的使用中代码的逻辑顺序和业务的顺序是不相同的，错误控制基本靠手动检查err参数。而到了 Promise 中这种情况好了很多，通过链式调用，Promise 可以直接在 then 中返回一个新的 Promise 来将异步操作串联起来，也有了统一的catch来做错误处理。美中不足的是，你仍然需要传递一个回调函数给 then，通过 then 来串联虽然保证了至少代码顺序上和真正的逻辑顺序一致，但和同步代码的差别仍然很大。
 #### Q3:Figure out those concepts: HTTP, HTTP Status Code (200, 401, 403, 404, 500).
 A3:Http(HyperText Transfer Protocol)被称为**超文本传输协议**,是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。HTTP是一个客户端（用户）和服务端（网站）之间请求和应答的标准，通常使用TCP协议。通过使用网页浏览器、网络爬虫或者其它的工具，客户端发起一个HTTP请求到服务器上指定端口（默认端口为80）。我们称这个客户端为用户代理程序（user agent）。应答的服务器上存储着一些资源，比如HTML文件和图像。我们称这个应答服务器为源服务器（origin server）。在用户代理和源服务器中间可能存在多个“中间层”，比如代理服务器、网关或者隧道（tunnel）。
