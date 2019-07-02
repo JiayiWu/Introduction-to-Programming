@@ -36,6 +36,7 @@ class TodoDetail extends Component{
           }
         </div>
       </div>
+      <button type='button' onclick='TodoController.deleteTodo()'>Delete</button>
       ${
         data.editing?
         `<footer onclick='TodoController.saveTodo()'>Save</footer>`

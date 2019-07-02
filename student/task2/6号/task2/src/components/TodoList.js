@@ -21,6 +21,7 @@ class TodoList extends Component {
           `
         }).join('')}
       </ol>
+      <button type='button' onclick='TodoController.Logout()'>LOGOUT</button>
       <footer onclick='TodoController.addTodo()'>+</footer>
     `
   }

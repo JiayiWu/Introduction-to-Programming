@@ -21,13 +21,6 @@ class UserController extends Controller {
   }
   async register() {
     console.log(todoController.fetchTodoList)
-    // const form = document.getElementById('loginForm')
-    // const formInputs = [...form.getElementsByTagName('input')]
-    // let formData = {}
-    // formInputs.forEach((input) => {
-    //   const name = input.getAttribute('name')
-    //   formData[name] = input.value
-    // })
     const formData=this.getLoginFormData()
     if (formData['password'] !== formData['repassword']) {
       alert('两次输入密码不一致！')
@@ -45,7 +38,7 @@ class UserController extends Controller {
       console.log('register success')
       // 提示注册成功并且跳转到登录，也可以做成注册后自动登录
       alert('注册成功，自动登陆');
-      this.switchMode();
+      // this.switchMode();
       this.login();
     } else {
       // 处理错误
@@ -57,13 +50,6 @@ class UserController extends Controller {
     // 获取界面表达数据，请求接口，如果登录成功则关闭弹窗并进入系统
     // 进入系统后，需要向后端获取todolist并修改model
     // 需要调用todoController.fetchTodoList
-    // const form = document.getElementById('loginForm')
-    // const formInputs = [...form.getElementsByTagName('input')]
-    // let formData = {}
-    // formInputs.forEach((input) => {
-    //   const name = input.getAttribute('name')
-    //   formData[name] = input.value
-    // })
     const formData=this.getLoginFormData()
     const responce=await Request.post('/session/create',{
       body:JSON.stringify({
@@ -75,6 +61,9 @@ class UserController extends Controller {
       console.log('登陆成功');
       let loginModal=document.getElementById("LoginModal")
       loginModal.setAttribute("style","display:none")
+      console.log('todoController.fetchTodoList')
+      todoController.fetchTodoList()
+      this.switchMode()
     }else{
       alert('登陆失败');
     }
