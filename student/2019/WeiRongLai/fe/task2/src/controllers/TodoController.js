@@ -1,4 +1,30 @@
 import Controller from "../libs/Controller.js";
+import Request from '../libs/Request.js'
+const json=
+  {
+    "todos": [
+      {
+        "id": 1,
+        "title": "欢迎1",
+        "content": "欢迎1",
+        "createTime": 15563047071230,
+        "noticeTime": 1556374707123
+      },
+      {
+        "id": 2,
+        "title": "欢迎2",
+        "content": "欢迎2",
+        "createTime": 1556304707123,
+        "noticeTime": 1556374707123
+      }
+    ],
+    "activeTodoId": 1,
+    "maxTodoId": 2,
+    "editing": false,
+    
+    "user": "09876",
+    "isRegister": true
+  }
 
 class TodoController extends Controller {
 
@@ -54,8 +80,50 @@ class TodoController extends Controller {
     }
   }
 
-  fetchTodoList() {
+  deleteTodo(){
+    const currentData = this.model.data
+    const deleteTodoIndex= currentData.todos.findIndex(v => v.id == currentData.activeTodoId);
+    const newActiveTodoId=deleteTodoIndex+1>currentData.maxTodoId?currentData.maxTodoId-1:deleteTodoIndex+1;
+    const newTodos=currentData.todos
+    .filter(todo=>todo.id-1!==deleteTodoIndex)
+    .map((v, i) =>({
+      ...v,
+      id:i+1
+    }))
+    this.model.update(data=>({
+      ...data,
+      maxTodoId:data.maxTodoId-1,
+      activeTodoId: newActiveTodoId,
+      todos:newTodos
+    }))
+  }
 
+  async fetchTodoList() {
+    //todo
+    const response=await Request.get('/session/info');
+    if(response.code==0){
+      console.log("getTodolistSuccess");
+      this.model.update(data=>(
+        json
+      ))
+    }else{
+      console.log("getTodolistFail");
+      alert("获取列表失败")
+    }
+  }
+  async fetchAccountInfo(){
+    const response=await Request.get('/session/info');
+    if(response.code==0){
+      console.log("getAccoutInfoSuccess");
+      const user=response.data.email;
+      this.model.update(data=>({
+        ...data,
+        user:user
+      }))
+    }else{
+      console.log("getAccountInfoFail");
+      // alert("获取列表失败")
+    }
   }
 }
 export default TodoController
