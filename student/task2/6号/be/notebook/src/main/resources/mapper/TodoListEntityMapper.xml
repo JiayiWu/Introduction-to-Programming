@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nju.notebook.dao.TodoListMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.nju.notebook.entity.TodoListEntity">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="title" jdbcType="LONGVARCHAR" property="title" />
+        <result column="create_time" jdbcType="BIGINT" property="createTime" />
+        <result column="notice_time" jdbcType="BIGINT" property="noticeTime" />
+        <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+      select
+        *
+      from todo_list
+    </select>
+
+    <insert id="insert" parameterType="cn.edu.nju.notebook.entity.TodoListEntity">
+      insert into todo_list (id, title, create_time, notice_time, content)
+      values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
+      #{createTime,jdbcType=BIGINT}, #{noticeTime,jdbcType=BIGINT}, #{content,jdbcType=LONGVARCHAR})
+    </insert>
+
+    <delete id="delete">
+      delete from todo_list
+    </delete>
+</mapper>
+
