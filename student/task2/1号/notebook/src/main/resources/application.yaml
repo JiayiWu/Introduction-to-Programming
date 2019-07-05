@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/login?characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: Allen
+    password: qweasd
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
+  resources:
+    static-locations: classpath:static/, file:static/
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.edu.nju.notebook.entity
+
+
+file:
+  maxUploadSizeMB: 10
+  savePath: img
+server:
+  port: 8999
+
