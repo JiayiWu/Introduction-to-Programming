@@ -2,7 +2,9 @@ package cn.edu.nju.notebook.controller;
 
 import cn.edu.nju.notebook.constant.SimpleResponse;
 import cn.edu.nju.notebook.entity.TodoListEntity;
+import cn.edu.nju.notebook.entity.UserEntity;
 import cn.edu.nju.notebook.service.TodoListService;
+import cn.edu.nju.notebook.vo.UserVO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +24,7 @@ public class TodoListController {
   public SimpleResponse read(HttpSession session) {
     List<TodoListEntity> todoListEntities = null;
     try {
-      todoListEntities = todoListService.read();
+      todoListEntities = todoListService.read(session.getAttribute("user"));
     }catch (Exception ex) {
       ex.printStackTrace();
       return SimpleResponse.error("read todoLists error");
@@ -35,7 +37,9 @@ public class TodoListController {
   @PostMapping("write")
   public SimpleResponse write(HttpSession session, @RequestBody List<TodoListEntity> todoListEntities) {
     try {
-      todoListService.write(todoListEntities);
+      UserVO user = new UserVO((UserEntity)session.getAttribute("user"));
+      todoListService.delete(user);
+      todoListService.write(todoListEntities, user);
     }catch (Exception ex) {
       ex.printStackTrace();
       return SimpleResponse.error("error");
