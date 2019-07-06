@@ -1,8 +1,12 @@
 package cn.edu.nju.notebook.dao;
 
+import cn.edu.nju.notebook.entity.TodoListEntity;
 import cn.edu.nju.notebook.entity.UserEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+//这里是持久层
 @Repository
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -20,4 +24,6 @@ public interface UserMapper {
     int updateByPrimaryKeyWithBLOBs(UserEntity record);
 
     int updateByPrimaryKey(UserEntity record);
+
+    List<TodoListEntity> findTodoList(String email);
 }

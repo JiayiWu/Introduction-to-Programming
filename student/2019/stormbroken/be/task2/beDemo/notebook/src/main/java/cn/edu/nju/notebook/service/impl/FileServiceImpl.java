@@ -19,11 +19,13 @@ import java.nio.file.Paths;
 public class FileServiceImpl implements FileService {
 
     @Value("${file.maxUploadSizeMB}")
+    //将外部的值注入到spring框架中
     private int maxUploadSize;
 
 
 
     @Override
+    //MulitipartFile,一般是前台传过来的文件
     public String handleFileUpload(MultipartFile file, String directory)
             throws Exception {
 
@@ -46,7 +48,7 @@ public class FileServiceImpl implements FileService {
             saveFileName = Paths.get(contextPath,directory,randomName+suffix)
                     .toString();
             saveFile = new File(saveFileName);
-        }
+        }//排除已经存在的可能
         File parentFile = saveFile.getParentFile();
         if(!parentFile.exists()){
             parentFile.mkdirs();

@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void modifyPassword(int id, String oldPassword,String newPassword) {
+        //需要我们先确认输入原来的密码，然后转码新的密码
         UserEntity userEntity = userMapper.selectByPrimaryKey(id);
         try {
             if (!userEntity.getPassword().equals(MD5Encryption.encrypt(oldPassword))){

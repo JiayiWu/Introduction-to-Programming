@@ -11,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
 public class MD5Encryption {
 
     public static String encrypt(String word) throws NoSuchAlgorithmException {
+        //用于加密密码
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] input = word.getBytes();
         byte[] output = md.digest(input);

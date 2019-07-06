@@ -1,6 +1,7 @@
 package cn.edu.nju.notebook.entity;
 
-public class UserEntity {//是一个用户的实体类
+public class UserEntity {
+    //是一个用户的实体类
 
     private Integer id;
 

@@ -29,7 +29,7 @@ public class SimpleResponse {
   public SimpleResponse(int code, Object data, String exception){
     this.code = code;
     this.data = data;
-    this.exception = exception;
+    this.exception = exception;//其他的异常部分
   }
 
   public SimpleResponse(int code) {
@@ -97,6 +97,7 @@ public class SimpleResponse {
 
 
   @JsonIgnore
+  //在序列化的时候忽略
   public String getException() {
     return exception;
   }

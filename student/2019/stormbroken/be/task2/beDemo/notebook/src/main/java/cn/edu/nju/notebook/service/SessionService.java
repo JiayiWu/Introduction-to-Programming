@@ -8,6 +8,7 @@ import cn.edu.nju.notebook.entity.UserEntity;
  * Change everywhere
  */
 public interface SessionService {
+    //目前只有注册部分
 
     public UserEntity login(String email,String password);
 }

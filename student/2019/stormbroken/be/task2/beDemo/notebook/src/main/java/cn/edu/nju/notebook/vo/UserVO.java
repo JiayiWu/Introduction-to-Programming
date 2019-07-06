@@ -9,7 +9,8 @@ import lombok.Data;
  * Change everywhere
  */
 @Data
-public class UserVO {//这是一个用户的具体的实现类
+public class UserVO {
+    //这是一个用户的具体的实现类
     private Integer id;
 
     private String name;

@@ -24,6 +24,7 @@ public class SessionServiceImpl implements SessionService{
 
     @Override
     public UserEntity login(String email, String password) {
+        //查找数据库
         UserEntity userEntity = userMapper.selectByEmail(email);
         try {
             if (!userEntity.getPassword().equals(MD5Encryption.encrypt(password))){

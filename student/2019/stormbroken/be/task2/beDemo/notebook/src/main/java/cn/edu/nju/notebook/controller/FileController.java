@@ -28,7 +28,7 @@ public class FileController {
 
     @Autowired
     private FileService fileService;
-
+    //来自swagger中的
     @ApiOperation(value = "上传文件", response = SimpleResponse.class,notes = "返回上传文件后文件指定的路径")
     @PostMapping("/upload")
     public SimpleResponse handleFileUpload(HttpSession session, @RequestParam("file") MultipartFile file) {
