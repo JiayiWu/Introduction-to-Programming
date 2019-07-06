@@ -59,13 +59,24 @@ class UserController extends Controller {
     });
     if(responce.code===0){
       console.log('登陆成功');
-      let loginModal=document.getElementById("LoginModal")
-      loginModal.setAttribute("style","display:none")
       console.log('todoController.fetchTodoList')
-      todoController.fetchTodoList()
-      this.switchMode()
+      todoController.fetchAccountInfo()
+      // todoController.fetchTodoList()
+      // this.switchMode()
     }else{
       alert('登陆失败');
+    }
+  }
+  async logout(){
+    const responce=await Request.post('/session/destroy');
+    if(responce.code==0){
+      console.log('logoutSuccess')
+      this.model.update(data=>({
+        ...data,
+        user:null
+      }))
+    }else{
+      alert("登出失败")
     }
   }
 }

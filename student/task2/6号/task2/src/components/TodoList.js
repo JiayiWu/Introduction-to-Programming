@@ -3,6 +3,15 @@ import Component from "../libs/Component.js"
 class TodoList extends Component {
   render() {
     const { data } = this.model
+    if(data.todos.length==0){
+    return `
+    <header>Todo List</header>
+    <ol></ol>
+    <footer>
+      <button type='button' onclick='TodoController.addTodo()'>+</button>
+      <button type='button' onclick='TodoController.deleteTodo()'>-</button>
+    </footer>
+    `}
     return `
       <header>Todo List</header>
       <ol>
@@ -21,8 +30,10 @@ class TodoList extends Component {
           `
         }).join('')}
       </ol>
-      <button type='button' onclick='TodoController.Logout()'>LOGOUT</button>
-      <footer onclick='TodoController.addTodo()'>+</footer>
+      <footer>
+        <button type='button' onclick='TodoController.addTodo()'>+</button>
+        <button type='button' onclick='TodoController.deleteTodo()'>-</button>
+      </footer>
     `
   }
 }

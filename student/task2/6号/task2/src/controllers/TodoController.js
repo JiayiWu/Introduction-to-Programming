@@ -1,30 +1,30 @@
 import Controller from "../libs/Controller.js";
 import Request from '../libs/Request.js'
-const json=
-  {
-    "todos": [
-      {
-        "id": 1,
-        "title": "欢迎1",
-        "content": "欢迎1",
-        "createTime": 15563047071230,
-        "noticeTime": 1556374707123
-      },
-      {
-        "id": 2,
-        "title": "欢迎2",
-        "content": "欢迎2",
-        "createTime": 1556304707123,
-        "noticeTime": 1556374707123
-      }
-    ],
-    "activeTodoId": 1,
-    "maxTodoId": 2,
-    "editing": false,
+// const json=
+//   {
+//     "todos": [
+//       {
+//         "id": 1,
+//         "title": "欢迎1",
+//         "content": "欢迎1",
+//         "createTime": 15563047071230,
+//         "noticeTime": 1556374707123
+//       },
+//       {
+//         "id": 2,
+//         "title": "欢迎2",
+//         "content": "欢迎2",
+//         "createTime": 1556304707123,
+//         "noticeTime": 1556374707123
+//       }
+//     ],
+//     "activeTodoId": 1,
+//     "maxTodoId": 2,
+//     "editing": false,
     
-    "user": "09876",
-    "isRegister": true
-  }
+//     "user": "09876",
+//     "isRegister": true
+//   }
 
 class TodoController extends Controller {
 
@@ -54,6 +54,7 @@ class TodoController extends Controller {
         }
       ]
     }))
+    this.postTodolist()
   }
 
   editTodo() {
@@ -78,12 +79,14 @@ class TodoController extends Controller {
         }))
       }))
     }
+    this.postTodolist()
   }
 
   deleteTodo(){
     const currentData = this.model.data
+    if(this.model.data.maxTodoId==0)return;
     const deleteTodoIndex= currentData.todos.findIndex(v => v.id == currentData.activeTodoId);
-    const newActiveTodoId=deleteTodoIndex+1>currentData.maxTodoId?currentData.maxTodoId-1:deleteTodoIndex+1;
+    const newActiveTodoId=deleteTodoIndex==0?1:deleteTodoIndex;
     const newTodos=currentData.todos
     .filter(todo=>todo.id-1!==deleteTodoIndex)
     .map((v, i) =>({
@@ -96,20 +99,50 @@ class TodoController extends Controller {
       activeTodoId: newActiveTodoId,
       todos:newTodos
     }))
+    this.postTodolist()
   }
 
   async fetchTodoList() {
     //todo
+    const response=await Request.get('/todo_list/read');
+    const userTodoList=response.data;
+    if(response.code==0){
+      console.log("getTodolistSuccess");
+      this.model.update(data=>({
+        ...data,
+        activeTodoId:1,
+        maxTodoId:userTodoList.length,
+        todos:userTodoList
+      }))
+    }else{
+      console.log("getTodolistFail");
+      alert("获取列表失败")
+    }
+  }
+  async fetchAccountInfo(){
     const response=await Request.get('/session/info');
     if(response.code==0){
-      console.log("getResponseSuccess");
-
-      this.model.update(data=>(
-        json
-      ))
+      console.log("getAccoutInfoSuccess");
+      const user=response.data.email;
+      this.model.update(data=>({
+        ...data,
+        user:user
+      }))
+      this.fetchTodoList()
     }else{
-      console.log("getResponseFail");
-      alert("获取列表失败")
+      console.log("getAccountInfoFail");
+      // alert("获取列表失败")
+    }
+  }
+  
+  async postTodolist(){
+    const responce=await Request.post("/todo_list/write",{
+      body:JSON.stringify(this.model.data.todos),
+    })
+    if(responce.code==0){
+      console.log("更新成功")
+    }else{
+      console.log("更新失败")
     }
   }
 }

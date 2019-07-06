@@ -20,6 +20,7 @@ interface ModelData {
   editing: boolean
   user?: User
   isRegister: boolean
+  isEmpty:boolean
 }
 interface SubscribeFn {
   (data: ModelData): void 

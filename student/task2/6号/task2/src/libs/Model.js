@@ -23,7 +23,8 @@ class Model {
     editing: false,
     
     user: null,
-    isRegister: false
+    isRegister: false,
+    isEmpty:false
   }
   subscribeFns = []
 

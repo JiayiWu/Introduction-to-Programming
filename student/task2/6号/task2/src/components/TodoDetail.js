@@ -4,6 +4,18 @@ class TodoDetail extends Component{
   render(){
     const { data } = this.model
     const todo = data.todos[data.activeTodoId - 1]
+    if(data.todos.length==0)return `
+    <header>Todo Detail</header>
+    <div class='details'></div>
+    <footer>
+      ${
+        data.editing?
+        `<button type='button' onclick='TodoController.saveTodo()'>Save</button>`
+        :`<button type='button' onclick='TodoController.editTodo()'>Edit</button>`
+      }
+        <button type='button' onclick='UserController.logout()'>LOGOUT</button>
+      </footer>
+    `
     return `
       <header>Todo Detail</header>
       <div class='details'>
@@ -36,12 +48,14 @@ class TodoDetail extends Component{
           }
         </div>
       </div>
-      <button type='button' onclick='TodoController.deleteTodo()'>Delete</button>
+      <footer>
       ${
         data.editing?
-        `<footer onclick='TodoController.saveTodo()'>Save</footer>`
-        :`<footer onclick='TodoController.editTodo()'>Edit</footer>`
+        `<button type='button' onclick='TodoController.saveTodo()'>Save</button>`
+        :`<button type='button' onclick='TodoController.editTodo()'>Edit</button>`
       }
+        <button type='button' onclick='UserController.logout()'>LOGOUT</button>
+      </footer>
     `
   }
 }

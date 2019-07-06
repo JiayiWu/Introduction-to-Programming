@@ -20,7 +20,8 @@
  * @typedef { RequestInit & PostExpand } PostOption
  */
 
-const serverOrigin = "http://notebook.fivedreamer.com"
+// const serverOrigin = "http://notebook.fivedreamer.com"
+const serverOrigin = "http://localhost:8999"
 
 /**
  * 

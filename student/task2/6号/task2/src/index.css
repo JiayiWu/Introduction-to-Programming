@@ -90,6 +90,36 @@ main > #TodoDetail {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+#TodoList footer > button {
+  width: 50%;
+  height: 48px;
+  font-size: 14px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+#TodoList footer > button:hover {
+  background-color: #eee;
+}
+#TodoList footer > button:active {
+  background-color: #ddd;
+}
+
+#TodoDetail footer > button {
+  width: 50%;
+  height: 48px;
+  font-size: 14px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+#TodoDetail footer > button:hover {
+  background-color: #eee;
+}
+#TodoDetail footer > button:active {
+  background-color: #ddd;
+}
+
 .todo {
   display: flex;
   flex-direction: column;
