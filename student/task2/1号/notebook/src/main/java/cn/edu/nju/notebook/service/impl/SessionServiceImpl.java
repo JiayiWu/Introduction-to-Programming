@@ -25,10 +25,9 @@ public class SessionServiceImpl implements SessionService{
     @Override
     public UserEntity login(String email, String password) {
         UserEntity userEntity = userMapper.selectByEmail(email);
-//        System.out.println(userEntity);
         try {
             if (!userEntity.getPassword().equals(MD5Encryption.encrypt(password))){
-                throw new ServerException(ResponseCode.Error, "Password error");
+                throw new ServerException(ResponseCode.Error,"Password error");
             }
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

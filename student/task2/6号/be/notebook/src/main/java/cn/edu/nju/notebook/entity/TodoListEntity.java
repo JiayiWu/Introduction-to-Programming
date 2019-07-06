@@ -7,6 +7,8 @@ public class TodoListEntity {
 
   private Integer id;
 
+  private String user;
+
   private String title;
 
   private long createTime;
