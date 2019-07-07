@@ -1,5 +1,6 @@
 package cn.edu.nju.notebook.service.impl;
 
+import cn.edu.nju.notebook.aop.LoggerManage;
 import cn.edu.nju.notebook.constant.ResponseCode;
 import cn.edu.nju.notebook.constant.ServerException;
 import cn.edu.nju.notebook.dao.UserMapper;
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
     @Override
+    @LoggerManage(description = "创建用户 UserServiceImpl.createUser")
     public UserEntity createUser(UserForm userForm) {
         UserEntity targetUser = userMapper.selectByEmail(userForm.getEmail());
         if (null != targetUser)
