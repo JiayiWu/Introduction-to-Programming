@@ -1,11 +1,8 @@
 package cn.edu.nju.notebook.entity;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class TodoEntity {
     private Integer id;
     private Integer userId;

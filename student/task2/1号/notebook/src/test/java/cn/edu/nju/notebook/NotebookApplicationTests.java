@@ -1,6 +1,9 @@
 package cn.edu.nju.notebook;
 
+import cn.edu.nju.notebook.dao.FolderMapper;
+import cn.edu.nju.notebook.dao.TodoMapper;
 import cn.edu.nju.notebook.dao.UserMapper;
+import cn.edu.nju.notebook.entity.FolderEntity;
 import cn.edu.nju.notebook.entity.UserEntity;
 import cn.edu.nju.notebook.form.UserForm;
 import cn.edu.nju.notebook.service.impl.FolderServiceImpl;
@@ -16,13 +19,20 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class NotebookApplicationTests {
-
 	private Logger logger;
+
 	@Autowired
 	private UserMapper userMapper;
+	@Autowired
+	private FolderMapper folderMapper;
+	@Autowired
+	private TodoMapper todoMapper;
 
 	/**
 	 * 添加Mybatis单元测试
@@ -37,7 +47,7 @@ public class NotebookApplicationTests {
 	@Test
 	@Transactional
 	//@Rollback 默认为true，可以不写
-	public void setUserMapper(){
+	public void UserEntityMapperInsertTest() {
 		logger = LoggerFactory.getLogger(getClass());
 
 		UserEntity userEntity = new UserEntity();
@@ -46,14 +56,60 @@ public class NotebookApplicationTests {
 		userEntity.setLogoUrl("AAA");
 		userEntity.setPassword("AAA");
 		userMapper.insert(userEntity);
-
 		UserEntity user1 = userMapper.selectByEmail("test@163.com");
 		Assert.assertEquals("test",user1.getName());
 		logger.info(user1.toString());
 
+	}
+
+	@Test
+	@Transactional
+	public void UserEntityMapperSelectByPrimaryKeyTest() {
+		logger = LoggerFactory.getLogger(getClass());
+
+		UserEntity userEntity = new UserEntity();
+		userEntity.setName("test");
+		userEntity.setEmail("test@163.com");
+		userEntity.setLogoUrl("AAA");
+		userEntity.setPassword("AAA");
+		userMapper.insert(userEntity);
+		UserEntity user1 = userMapper.selectByEmail("test@163.com");
+
 		UserEntity user2 = userMapper.selectByPrimaryKey(user1.getId());
 		Assert.assertEquals(user1.getName(),user2.getName());
 		logger.info(user1.toString());
+	}
+
+	@Test
+	@Transactional
+	public void FolderEntityMapperTest(){
+		logger = LoggerFactory.getLogger(getClass());
+
+		FolderEntity folderEntity = new FolderEntity();
+		folderEntity.setUserId(2);
+		folderEntity.setName("testingFolder1");
+		folderMapper.insert(folderEntity);
+		logger.info(folderEntity.toString());
+
+		Assert.assertEquals(folderEntity.getId(),
+				folderMapper.selectByUserIdAndName(2,"testingFolder1").getId());
+
+		folderEntity = new FolderEntity();
+		folderEntity.setUserId(2);
+		folderEntity.setName("testingFolder2");
+		folderMapper.insert(folderEntity);
+		logger.info(folderEntity.toString());
+
+		List<FolderEntity> folderEntities = folderMapper.selectByUserId(2);
+
+		folderMapper.selectByUserId(2).forEach((n)->Assert.assertEquals
+				(2,Long.parseLong(n.getUserId().toString())));
+		logger.info(folderEntities.get(0).toString());
+		logger.info(folderEntities.get(1).toString());
+
+		Assert.assertEquals(folderEntity.getId(),
+				folderMapper.selectByUserIdAndName(2,"testingFolder2").getId());
+
 	}
 
 }
