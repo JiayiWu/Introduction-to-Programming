@@ -48,13 +48,12 @@ class UserController extends Controller {
       body: JSON.stringify({
         email: formData.email,
         password: formData.password
+        name:formData.email,
+        logoUrl:" "
       }),
     })
-
-    response.code = 200
-    // 注册成功的判定由前后端商议
     
-    if (response.code === 200) {
+    if (response.code === 0) {
       console.log('register success')
       alert('注册成功！')
       this.model.update(data => ({
@@ -87,9 +86,8 @@ class UserController extends Controller {
         password: formData.password
       }),
     })
-    response.code=200
-    TodoController.fetchTodoList()
-    if(response.code === 200){
+
+    if(response.code === 0){
       this.model.update(data => ({
         ...data,
         user: formData['email']
