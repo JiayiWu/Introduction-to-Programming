@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "removeComments": true,
+    "module": "es6"
+  }
+}
