@@ -3,21 +3,23 @@ package cn.edu.nju.notebook.service.impl;
 import cn.edu.nju.notebook.dao.DirMapper;
 import cn.edu.nju.notebook.dao.TodoListMapper;
 import cn.edu.nju.notebook.entity.DataEntity;
-import cn.edu.nju.notebook.entity.TodoListEntity;
+import cn.edu.nju.notebook.entity.TodoEntity;
 import cn.edu.nju.notebook.entity.UserEntity;
 import cn.edu.nju.notebook.service.TodoService;
 import cn.edu.nju.notebook.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 @Service
 public class TodoServiceImpl implements TodoService {
-
+    @Resource
     @Autowired
     TodoListMapper todoListMapper;
     DirMapper dirMapper;
     @Override
-    public void add(TodoListEntity todoListEntity){
+    public void add(TodoEntity todoListEntity){
         todoListMapper.insert(todoListEntity);
     }
     @Override
@@ -26,15 +28,15 @@ public class TodoServiceImpl implements TodoService {
         DataEntity dataEntity = new DataEntity(userEntity,
                                             todoListMapper.selectAll(new UserVO((UserEntity)user))
                                             );
-        return dataEntity;//dirMapper.selectAll(new UserVO((UserEntity)user))
+        return dataEntity;//,dirMapper.selectAll(new UserVO((UserEntity)user)))
     }
     @Override
-    public void edit(TodoListEntity todoListEntity){
+    public void edit(TodoEntity todoListEntity){
         todoListMapper.update(todoListEntity);
     }
     @Override
-    public void remove(int id){
-        todoListMapper.delete(id);
+    public void remove(String name,int id){
+        todoListMapper.delete(name,id);
     }
 
 }

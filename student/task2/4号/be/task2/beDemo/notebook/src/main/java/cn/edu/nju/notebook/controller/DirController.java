@@ -3,14 +3,12 @@ package cn.edu.nju.notebook.controller;
 import cn.edu.nju.notebook.constant.ServerException;
 import cn.edu.nju.notebook.constant.SimpleResponse;
 import cn.edu.nju.notebook.entity.DirEntity;
-import cn.edu.nju.notebook.entity.TodoListEntity;
+import cn.edu.nju.notebook.entity.UserEntity;
 import cn.edu.nju.notebook.service.DirService;
-import cn.edu.nju.notebook.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @RestController
 @RequestMapping("/dir/")
@@ -18,7 +16,6 @@ public class DirController {
 
     @Autowired
     DirService dirService;
-    TodoService todoService;
 
     @PostMapping("create")
     public SimpleResponse create(HttpSession session,@RequestBody DirEntity dirEntity){
@@ -26,7 +23,9 @@ public class DirController {
         if (null == object){
             return SimpleResponse.error("Please login");
         }
+        UserEntity userEntity = (UserEntity) object;
         try {
+            dirEntity.setUser(userEntity.getName());
             dirService.create(dirEntity);
             return SimpleResponse.ok(dirEntity);
         }catch (ServerException serverException){

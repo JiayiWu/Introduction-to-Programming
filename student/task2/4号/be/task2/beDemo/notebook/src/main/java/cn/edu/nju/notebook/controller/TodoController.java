@@ -3,14 +3,13 @@ package cn.edu.nju.notebook.controller;
 import cn.edu.nju.notebook.constant.ServerException;
 import cn.edu.nju.notebook.constant.SimpleResponse;
 import cn.edu.nju.notebook.entity.DataEntity;
-import cn.edu.nju.notebook.entity.TodoListEntity;
+import cn.edu.nju.notebook.entity.TodoEntity;
 import cn.edu.nju.notebook.entity.UserEntity;
 import cn.edu.nju.notebook.service.TodoService;
 import cn.edu.nju.notebook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @RestController
 @RequestMapping("/todolist/")
@@ -20,7 +19,7 @@ public class TodoController {
     UserService userService;
     @PostMapping("add")
     //@RequestBody很重要
-    public SimpleResponse add(HttpSession session,@RequestBody TodoListEntity todoListEntity){
+    public SimpleResponse add(HttpSession session,@RequestBody TodoEntity todoListEntity){
         Object object = session.getAttribute("user");
         if (null == object){
             return SimpleResponse.error("Please login");
@@ -55,12 +54,14 @@ public class TodoController {
         }
     }
     @PostMapping("edit")
-    public SimpleResponse edit(HttpSession session,@RequestBody TodoListEntity todoListEntity){
+    public SimpleResponse edit(HttpSession session,@RequestBody TodoEntity todoListEntity){
         Object object = session.getAttribute("user");
         if (null == object){
             return SimpleResponse.error("Please login");
         }
         try {
+            UserEntity userEntity = (UserEntity) object;
+            todoListEntity.setUser(userEntity.getName());
             todoService.edit(todoListEntity);
             return SimpleResponse.ok(todoListEntity);
         }catch (ServerException serverException){
@@ -77,7 +78,8 @@ public class TodoController {
             return SimpleResponse.error("Please login");
         }
         try {
-            todoService.remove(id);
+            UserEntity userEntity = (UserEntity) object;
+            todoService.remove(userEntity.getName(),id);
             return SimpleResponse.ok(null);
         }catch (ServerException serverException){
             return SimpleResponse.error(serverException.getMessage());

@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
                 throw new ServerException(ResponseCode.Error,"Password error");
             }
             userEntity.setPassword(MD5Encryption.encrypt(newPassword));
-
+            userMapper.updateByPrimaryKey(userEntity);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }

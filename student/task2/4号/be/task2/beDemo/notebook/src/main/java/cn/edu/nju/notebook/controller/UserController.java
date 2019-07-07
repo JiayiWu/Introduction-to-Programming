@@ -24,7 +24,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-    @ApiOperation(value = "用户注册", response = UserVO.class,notes = "返回SimpleResponse对象，如果成功注册，则SimpleResponse对象Data为UserVO")
     @PostMapping("account")
     public SimpleResponse register(HttpSession session, @RequestBody UserForm userForm){
         UserEntity userEntity = null;
@@ -40,7 +39,6 @@ public class UserController {
         return SimpleResponse.ok(new UserVO(userEntity));
     }
 
-    @ApiOperation(value = "修改密码", response = SimpleResponse.class)
     @PostMapping("password")
     public SimpleResponse modifyPassword(HttpSession session, @RequestBody PasswordForm passwordForm){
 

@@ -1,23 +1,19 @@
 package cn.edu.nju.notebook.service.impl;
 
 import cn.edu.nju.notebook.dao.DirMapper;
-import cn.edu.nju.notebook.dao.TodoListMapper;
-import cn.edu.nju.notebook.dao.UserMapper;
 import cn.edu.nju.notebook.entity.DirEntity;
-import cn.edu.nju.notebook.entity.TodoListEntity;
 import cn.edu.nju.notebook.service.DirService;
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 @Service
 public class DirServiceImpl implements DirService {
     @Autowired
     DirMapper dirMapper;
-    TodoListMapper todoListMapper;
 
     @Override
     public void create(DirEntity dirEntity){

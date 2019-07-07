@@ -1,6 +1,6 @@
 package cn.edu.nju.notebook.dao;
 
-import cn.edu.nju.notebook.entity.TodoListEntity;
+import cn.edu.nju.notebook.entity.TodoEntity;
 import cn.edu.nju.notebook.entity.UserEntity;
 import org.springframework.stereotype.Repository;
 
@@ -25,5 +25,5 @@ public interface UserMapper {
 
     int updateByPrimaryKey(UserEntity record);
 
-    List<TodoListEntity> findTodoList(String email);
+    List<TodoEntity> findTodoList(String email);
 }

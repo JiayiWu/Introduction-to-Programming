@@ -8,6 +8,8 @@
 
         <id column="id" jdbcType="INTEGER" property="id" />
 
+        <result column="number"  jdbcType="INTEGER" property="number"/>
+
         <result column="user" jdbcType="VARCHAR" property="user" />
 
         <result column="todo" jdbcType="VARCHAR" property="todo"/>
@@ -54,7 +56,7 @@
     </delete>
 
 
-    <update id="update" parameterType="cn.edu.nju.notebook.entity.TodoListEntity">
+    <update id="update" parameterType="cn.edu.nju.notebook.entity.DirEntity">
         update dir_list
         set todo = #{todo,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}

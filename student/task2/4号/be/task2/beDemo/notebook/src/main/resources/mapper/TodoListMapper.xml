@@ -4,9 +4,11 @@
 
 <mapper namespace="cn.edu.nju.notebook.dao.TodoListMapper">
 
-    <resultMap id="BaseResultMap" type="cn.edu.nju.notebook.entity.TodoListEntity">
+    <resultMap id="BaseResultMap" type="cn.edu.nju.notebook.entity.TodoEntity">
 
         <id column="id" jdbcType="INTEGER" property="id" />
+
+        <result column="number"  jdbcType="INTEGER" property="number"/>
 
         <result column="user" jdbcType="VARCHAR" property="user" />
 
@@ -17,8 +19,6 @@
         <result column="createTime" jdbcType="BIGINT" property="createTime" />
 
         <result column="noticeTime" jdbcType="BIGINT" property="noticeTime" />
-
-
 
     </resultMap>
 
@@ -38,7 +38,7 @@
 
 
 
-    <insert id="insert" parameterType="cn.edu.nju.notebook.entity.TodoListEntity">
+    <insert id="insert" parameterType="cn.edu.nju.notebook.entity.TodoEntity">
 
       insert into todo_list (id, user, title, content,createTime, noticeTime)
 
@@ -48,22 +48,21 @@
 
 
 
-
     <delete id="delete" parameterType="cn.edu.nju.notebook.vo.UserVO">
 
       delete from todo_list
 
-      where id = #{id,jdbcType=INTEGER}
+      where user = #{name} AND id = #{id}
 
     </delete>
 
-    <update id="update" parameterType="cn.edu.nju.notebook.entity.TodoListEntity">
+    <update id="update" parameterType="cn.edu.nju.notebook.entity.TodoEntity">
         update todo_list
         set title = #{title},
         content = #{content},
         createTime = #{createTime},
         noticeTime = #{noticeTime}
-        where id = #{id,jdbcType=INTEGER}
+        where user = #{user,jdbcType=VARCHAR} AND id = #{id,jdbcType=INTEGER}
   </update>
 
 </mapper>
