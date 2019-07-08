@@ -65,8 +65,8 @@ class TodoDetail extends Component{
         `<footer onclick='TodoController.saveTodo()'>Save</footer>`
         :`<footer onclick='TodoController.editTodo()'>Edit</footer>`):(
           data.editing?
-        `<footer onclick='TodoController.saveDir()'>Save</footer>`
-        :``
+        (`<footer onclick='TodoController.saveDir()'>Save</footer>`)
+        :`<footer onclick='TodoController.editTodo()'>Edit</footer>`
         )
       }
     `

@@ -43,7 +43,6 @@ class UserController extends Controller {
       alert('两次输入密码不一致！')
       return
     }
-
     const response = await Request.post('/user/account', {
       body: JSON.stringify({
         email: formData.email,

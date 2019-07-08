@@ -207,8 +207,40 @@ class TodoController extends Controller {
         todos: data.todos.map((v, i) => i != saveTodoIndex ? v : ({
           ...v,
           title: document.getElementById("EditTitle").value, 
-          noticeTime: new Date(document.getElementById("EditNoticeTime").value).getTime(), 
           content: document.getElementById("EditContent").value
+        }))
+      }))
+    }
+  }
+
+  async saveDir() {
+    let index
+    for(let i=1;i<this.model.data.todos.length;i++){
+      if(this.model.data.todos[i].id==this.model.data.activeTodoId){
+        index=i
+        break
+      }
+    }
+    const currentData = this.model.data
+    const saveTodoIndex = currentData.todos.findIndex(v => v.id == currentData.activeTodoId)
+    //需要检查
+    const response =await Request.post('/folder/update/'+this.model.data.todos[index].dirID, {
+      body: JSON.stringify({
+        name: document.getElementById("EditTitle").value,
+      }),
+    })
+    if(response.code!==0){
+      alert('保存失败')
+      return
+    }
+    if (saveTodoIndex >= 0 && currentData.todos[saveTodoIndex]) {
+      this.model.update(data => ({
+        ...data,
+        editing: false,
+        todos: data.todos.map((v, i) => i != saveTodoIndex ? v : ({
+          ...v,
+          title: document.getElementById("EditTitle").value, 
+          
         }))
       }))
     }
