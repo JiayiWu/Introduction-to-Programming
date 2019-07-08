@@ -85,14 +85,14 @@ class TodoController extends Controller {
   }
 
   async addDir() {
-    let name=prompt("请输入文件夹的名字",""); // 弹出input框
+    //let name=prompt("请输入文件夹的名字",""); 
     const response =await Request.post('/folder/add', {
       body: JSON.stringify({
-        name:name
+        name:"请输入名称"
       }),
     })
     if(response.code!==0){
-      alert("创建失败！请检查输入的名称是否重复，是否为空")
+      alert("创建失败！请检查是否有文件夹未命名，请命名后重试！")
       return 
     }
     if(response.data.id>this.model.data.maxTodoId){
@@ -101,17 +101,17 @@ class TodoController extends Controller {
     this.model.data.activeTodoId=response.data.id
     this.model.update(data => ({
       ...data,
-      maxTodoId: data.maxTodoId + 1,
-      activeTodoId: data.maxTodoId + 1,
+      activeTodoId: response.data.id,
       editing: true,
       todos: [
         ...data.todos, 
         { 
           id: response.data.id,
-          title: name, 
+          title: "请输入名称", 
           type:'dir',
           dir_active:true,
           visible:true,
+          editing: true,
           dirID:response.data.id
         }
       ]
