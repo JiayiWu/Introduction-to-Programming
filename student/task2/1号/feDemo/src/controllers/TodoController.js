@@ -95,9 +95,6 @@ class TodoController extends Controller {
       alert("创建失败！请检查是否有文件夹未命名，请命名后重试！")
       return 
     }
-    if(response.data.id>this.model.data.maxTodoId){
-      this.model.data.maxTodoId=response.data.id
-    }
     this.model.data.activeTodoId=response.data.id
     this.model.update(data => ({
       ...data,
@@ -127,6 +124,10 @@ class TodoController extends Controller {
         break
       }
     }
+    if(index===1){
+      alert("无法删除默认文件夹")
+      return 
+    }
     if(this.model.data.todos[index].type==='dir'&&this.model.data.todos[index].dir_active===false){
       alert('你不能在文件夹折叠的时候删除文件夹，请先展开文件夹')
       return 
@@ -137,11 +138,16 @@ class TodoController extends Controller {
     }
 
     if(this.model.data.todos[index].type==='dir'){
+      if(this.model.data.todos[index].type==='file'||index===this.model.data.todos.length){
+        alert("文件夹非空，请清空后再删除!")
+        return
+      }
       const response =await Request.post('/folder/del', {
         body: JSON.stringify({
           name:this.model.data.todos[index].title
         }),
       })
+
       if(response.code!==0){
         alert('删除失败')
         return
@@ -248,8 +254,8 @@ class TodoController extends Controller {
 
   async fetchTodoList() {
     //从后端获取所有文件夹
-    const response =await Request.get('/folder/all', JSON.stringify([{
-    }]))
+    const response =await Request.get('/folder/all', JSON.stringify([{}]))
+    
     //从后端获取todolist
     //alert(response.data)
     for(let i=0;i<response.data.length;i++){
@@ -277,12 +283,34 @@ class TodoController extends Controller {
       });
       }
     }
+    if(this.model.data.todos.length===1){
+      const response =await Request.post('/folder/add', {
+        body: JSON.stringify({
+          name:"默认文件夹"
+        }),
+      })
+      this.model.update(data => ({
+        ...data,
+        activeTodoId: response.data.id,
+        editing: true,
+        todos: [
+          ...data.todos, 
+          { 
+            id: response.data.id,
+            title: "默认文件夹", 
+            type:'dir',
+            dir_active:true,
+            visible:true,
+            editing: true,
+            dirID:response.data.id
+          }
+        ]
+      }))
+    }
     this.model.update(data => ({
       ...data,
       maxTodoId:response.data.length
     }))
-    
-
   }
 }
 export default TodoController
