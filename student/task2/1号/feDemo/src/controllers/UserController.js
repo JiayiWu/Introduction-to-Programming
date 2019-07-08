@@ -24,7 +24,7 @@ class UserController extends Controller {
       return 
     }
 
-      //TODO：匹配邮箱是否符合邮箱格式
+    //TODO：匹配邮箱是否符合邮箱格式
     function IsEmail(str) {
       var reg=/^\w+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
       return reg.test(str);
@@ -43,11 +43,10 @@ class UserController extends Controller {
       alert('两次输入密码不一致！')
       return
     }
-
     const response = await Request.post('/user/account', {
       body: JSON.stringify({
         email: formData.email,
-        password: formData.password
+        password: formData.password,
         name:formData.email,
         logoUrl:" "
       }),
@@ -68,7 +67,7 @@ class UserController extends Controller {
     return
   }
 
-  login() {
+  async login() {
     // 获取界面表达数据，请求接口，如果登录成功则关闭弹窗并进入系统
     // 进入系统后，需要向后端获取todolist并修改model
     // 需要调用todoController.fetchTodoList
@@ -80,19 +79,24 @@ class UserController extends Controller {
       formData[name] = input.value
     })
     //修改以下请求
-    const response = Request.post('/session/create', {
+    const response =await Request.post('/session/create', {
       body: JSON.stringify({
         email: formData.email,
         password: formData.password
       }),
     })
-
     if(response.code === 0){
+      TodoController.fetchTodoList()
       this.model.update(data => ({
         ...data,
-        user: formData['email']
+        user: formData['email'],
+        userId:response.data.id
       }))
     }
+    else{
+      alert("账号或密码错误，或账号未注册，请检查！")
+    }
+    
   }
 }
 

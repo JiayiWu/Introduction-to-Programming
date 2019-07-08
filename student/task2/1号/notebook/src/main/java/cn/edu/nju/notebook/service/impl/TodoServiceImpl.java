@@ -22,9 +22,10 @@ public class TodoServiceImpl implements TodoService {
         if(todo==null){
             throw new ServerException(ResponseCode.Error,"创建待办事项失败");
         }
-        if(todoMapper.selectByTitle(todo.getTitle())!=null){
-            throw new ServerException(ResponseCode.Error,"待办事项已存在");
-        }
+//        TodoEntity target = todoMapper.selectByTitle(todo.getTitle());
+//        if((target!=null)&& (userId.equals(target.getUserId()))&&(folderId.equals(target.getFolderId()))){
+//            throw new ServerException(ResponseCode.Error,"待办事项已存在");
+//        }
         TodoEntity todoEntity = new TodoEntity();
         todoEntity.setUserId(userId);
         todoEntity.setFolderId(folderId);
@@ -55,16 +56,16 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public TodoEntity updateTodo(Integer todoId, TodoForm todo) {
         if(todo==null){
-            throw new ServerException(ResponseCode.Error,"创建待办事项失败");
+            throw new ServerException(ResponseCode.Error,"更新待办事项失败");
         }
         TodoEntity todoEntity = new TodoEntity();
         todoEntity.setId(todoId);
         todoEntity.setTitle(todo.getTitle());
         todoEntity.setContent(todo.getContent());
         todoEntity.setNoticeTime(todo.getNoticeTime());
-        if(todoMapper.selectByTitle(todo.getTitle())!=null){
-            throw new ServerException(ResponseCode.Error,"待办事项已存在");
-        }
+        todoEntity.setUserId(todoMapper.selectByPrimaryKey(todoId).getUserId());
+        todoEntity.setFolderId(todoMapper.selectByPrimaryKey(todoId).getFolderId());
+
         todoMapper.update(todoEntity);
         return todoEntity;
 

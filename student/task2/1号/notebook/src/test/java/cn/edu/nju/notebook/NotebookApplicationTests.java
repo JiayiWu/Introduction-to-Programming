@@ -4,6 +4,7 @@ import cn.edu.nju.notebook.dao.FolderMapper;
 import cn.edu.nju.notebook.dao.TodoMapper;
 import cn.edu.nju.notebook.dao.UserMapper;
 import cn.edu.nju.notebook.entity.FolderEntity;
+import cn.edu.nju.notebook.entity.TodoEntity;
 import cn.edu.nju.notebook.entity.UserEntity;
 import cn.edu.nju.notebook.form.UserForm;
 import cn.edu.nju.notebook.service.impl.FolderServiceImpl;
@@ -33,6 +34,7 @@ public class NotebookApplicationTests {
 	private FolderMapper folderMapper;
 	@Autowired
 	private TodoMapper todoMapper;
+
 
 	/**
 	 * 添加Mybatis单元测试
@@ -82,7 +84,7 @@ public class NotebookApplicationTests {
 
 	@Test
 	@Transactional
-	public void FolderEntityMapperTest(){
+	public void FolderEntityMapperTest1(){
 		logger = LoggerFactory.getLogger(getClass());
 
 		FolderEntity folderEntity = new FolderEntity();
@@ -112,4 +114,45 @@ public class NotebookApplicationTests {
 
 	}
 
+	@Test
+	@Transactional
+	public void TodoEntityMapperTest1(){
+		logger = LoggerFactory.getLogger(getClass());
+
+		TodoEntity todoEntity = new TodoEntity();
+		todoEntity.setUserId(12);
+		todoEntity.setFolderId(2);
+		todoEntity.setTitle("test");
+		todoEntity.setContent("hello?");
+		todoEntity.setCreateTime(System.currentTimeMillis());
+		todoEntity.setNoticeTime(System.currentTimeMillis());
+
+		todoMapper.insert(todoEntity);
+		logger.info(todoEntity.toString());
+
+		todoEntity.setContent("Hello");
+		todoMapper.update(todoEntity);
+		logger.info(todoEntity.toString());
+		String temp = todoMapper.selectByPrimaryKey(todoEntity.getId()).getContent();
+		Assert.assertEquals("Hello",temp);
+
+	}
+
+
+	@Test
+	@Transactional
+	public void FolderEntityMapperTest2(){
+		logger = LoggerFactory.getLogger(getClass());
+
+		FolderEntity folderEntity = new FolderEntity();
+		folderEntity.setUserId(2);
+		folderEntity.setName("testingFolder2");
+		folderMapper.insert(folderEntity);
+		logger.info(folderEntity.toString());
+		int id = folderEntity.getId();
+		folderMapper.updateNameByPrimaryKey(id,"changedFolder2");
+
+		Assert.assertEquals("changedFolder2",
+				folderMapper.selectByPrimaryKey(id).getName());
+	}
 }

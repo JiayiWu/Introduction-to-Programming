@@ -121,6 +121,11 @@ main > #TodoDetail {
   cursor: default;
 }
 
+.todo.dir_active.active{
+  background-color: #64fa00;
+  cursor: default;
+}
+
 .todo:not(:last-of-type) {
   border-bottom: 1px dashed #ccc;
 }

@@ -16,7 +16,7 @@ public interface FolderMapper {
 
     List<FolderEntity> selectByUserId(Integer userId);
 
-    int updateNameByPrimaryKey(Integer id);
+    int updateNameByPrimaryKey(Integer id,String newName);
 
     FolderEntity selectByPrimaryKey(Integer id);
 
