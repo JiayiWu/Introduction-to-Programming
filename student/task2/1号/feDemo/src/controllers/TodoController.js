@@ -138,7 +138,7 @@ class TodoController extends Controller {
     }
 
     if(this.model.data.todos[index].type==='dir'){
-      if(this.model.data.todos[index].type==='file'||index===this.model.data.todos.length){
+      if(index!==this.model.data.todos.length-1&&this.model.data.todos[index+1].type==='file'){
         alert("文件夹非空，请清空后再删除!")
         return
       }
