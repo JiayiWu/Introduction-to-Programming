@@ -34,5 +34,18 @@
         folder
         where user_id = #{userId,jdbcType=INTEGER}
     </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="FolderResultMap">
+        select
+        *
+        from
+        folder
+        where id = #{id}
+    </select>
+
+    <update id="updateNameByPrimaryKey">
+        update folder
+        set name = #{newName}
+        where id = #{id}
+    </update>
 
 </mapper>

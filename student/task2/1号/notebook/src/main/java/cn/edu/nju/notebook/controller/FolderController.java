@@ -32,7 +32,7 @@ public class FolderController {
             return SimpleResponse.error("文件夹名字不能为空");
         }
 
-        FolderEntity folderEntity = null;
+        FolderEntity folderEntity;
         try {
             UserEntity userEntity = (UserEntity) session.getAttribute("user");
             folderEntity = folderService.saveFolder(userEntity.getId(), folderForm.getName());
@@ -67,27 +67,27 @@ public class FolderController {
     }
 
 
-//    @ApiOperation(value = "修改文件夹", response = FolderVO.class, notes = "返回SimpleResponse对象，如果修改成功，SimpleResponse对象Data为FolderVO")
-//    @PostMapping("/update/{folderId}")
-//    public SimpleResponse changeFolder(HttpSession session, @PathVariable("folderId") Integer folderId, @RequestBody FolderForm folderForm) {
-//
-//        if (session.getAttribute("user") == null) {
-//            return SimpleResponse.error("Not login");
-//        }
-//
-//        if (folderForm.getName() == null || folderForm.getName().equals("")) {
-//            return SimpleResponse.error("新文件夹名字不能为空");
-//        }
-//
-//        FolderEntity folderEntity = null;
-//        try {
-//            UserEntity userEntity = (UserEntity) session.getAttribute("user");
-//            folderEntity = folderService.updateFolder(userEntity.getId(), folderId, folderForm.getName());
-//        } catch (Exception ex) {
-//            return SimpleResponse.exception(ex);
-//        }
-//        return SimpleResponse.ok(new FolderVO(folderEntity));
-//    }
+    @ApiOperation(value = "修改文件夹", response = FolderVO.class, notes = "返回SimpleResponse对象，如果修改成功，SimpleResponse对象Data为FolderVO")
+    @PostMapping("/update/{folderId}")
+    public SimpleResponse changeFolder(HttpSession session, @PathVariable("folderId") Integer folderId, @RequestBody FolderForm folderForm) {
+
+        if (session.getAttribute("user") == null) {
+            return SimpleResponse.error("Not login");
+        }
+
+        if (folderForm.getName() == null || folderForm.getName().equals("")) {
+            return SimpleResponse.error("新文件夹名字不能为空");
+        }
+
+        FolderEntity folderEntity ;
+        try {
+            UserEntity userEntity = (UserEntity) session.getAttribute("user");
+            folderEntity = folderService.updateFolder(userEntity.getId(), folderId, folderForm.getName());
+        } catch (Exception ex) {
+            return SimpleResponse.exception(ex);
+        }
+        return SimpleResponse.ok(new FolderVO(folderEntity));
+    }
 
 
     @ApiOperation(value = "获取该用户所有文件夹", response = List.class, notes = "返回SimpleResponse对象，如果当前用户已经登录，则SimpleResponse对象Data为包含FolderEntity的数组")
@@ -100,7 +100,7 @@ public class FolderController {
             return SimpleResponse.error("Not login");
         }
 
-        List<FolderEntity> folders = null;
+        List<FolderEntity> folders ;
         try {
             folders = folderService.getFolders(((UserEntity) userInfo).getId());
         } catch (Exception ex) {
