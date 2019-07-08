@@ -9,7 +9,6 @@ class TodoController extends Controller {
     let index
     for(let i=1;i<this.model.data.todos.length;i++){
         if(this.model.data.todos[i].id==id){
-          
           index=i
           break
         }
@@ -37,8 +36,8 @@ class TodoController extends Controller {
   }
 
   async addTodo() {
-    let name=prompt("请输入todo的标题",""); 
-    let content=prompt("请输入todo的内容",""); 
+    //let name=prompt("请输入todo的标题",""); 
+    //let content=prompt("请输入todo的内容",""); 
     const cntTime = new Date().getTime()
     let dirID
     let index
@@ -54,8 +53,8 @@ class TodoController extends Controller {
       body: JSON.stringify({
       createTime: cntTime, 
       noticeTime: cntTime, 
-      title: name, 
-      content: content,
+      title: "标题", 
+      content: "内容",
       }),
     })
     if(response.code!==0){
@@ -66,8 +65,8 @@ class TodoController extends Controller {
       id: dirID+'.'+response.data.id, 
       createTime: cntTime, 
       noticeTime: cntTime, 
-      title:name, 
-      content:content,
+      title:"标题", 
+      content:"内容",
       type:'file',
       dirID:dirID,
       dir_active:false,
@@ -77,8 +76,7 @@ class TodoController extends Controller {
     
     this.model.update(data => ({
       ...data,
-      activeTodoId: data.maxTodoId + 1, 
-      maxTodoId: data.maxTodoId + 1,
+      activeTodoId: dirID+'.'+response.data.id, 
       editing: true,
       todos: [
         ...data.todos, 
@@ -113,7 +111,8 @@ class TodoController extends Controller {
           title: name, 
           type:'dir',
           dir_active:true,
-          visible:true
+          visible:true,
+          dirID:response.data.id
         }
       ]
     }))
