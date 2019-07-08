@@ -36,11 +36,20 @@ class TodoController extends Controller {
     const newTodo=currentData.todos[newTodoIndex];
     const response = await Request.post('/todolist/add', {
       body: JSON.stringify({
+        id: newTodo.id,
+        number:0,
+        user:{
+              id:newTodo.user.id,
+              name:newTodo.user.name,
+              password:newTodo.user.password,
+              email:newTodo.user.email,
+              logoUrl:newTodo.user.logoUrl
+            },
         title: newTodo.title,
         content: newTodo.content,
         createTime: newTodo.createTime,
         noticeTime: newTodo.noticeTime,
-        id: newTodo.id
+        
       }),
     })
     if(response.code===0){
@@ -111,6 +120,7 @@ class TodoController extends Controller {
       const response = await Request.post('/todolist/edit', {
         body: JSON.stringify({
           id:savedTodo.id,
+          number:0,
           user:{
             id:savedTodo.user.id,
             name:savedTodo.user.name,
