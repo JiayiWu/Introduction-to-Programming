@@ -4,6 +4,17 @@ class Model {
   data = {
     todos: [
       {
+        id: 0,
+        title: 'null',
+        content: 'null',
+        createTime: 1556304707123,
+        noticeTime: 1556374707123,
+        type:'null',
+        dir_active:false,
+        visible:true
+      },
+      /*
+      {
         id: 1,
         title: '默认收藏夹',
         content: '',
@@ -42,11 +53,11 @@ class Model {
         type:'file',
         dir_active:false,
         visible:true
-      },
+      },*/
     ],
-    
+    userID:null,
     activeTodoId: 0,
-    maxTodoId: 4,
+    maxTodoId: 0,
     editing: false,
     user: null,
     isRegister: false

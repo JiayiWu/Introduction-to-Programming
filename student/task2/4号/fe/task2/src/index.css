@@ -94,38 +94,12 @@ main > #TodoDetail {
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  height: 120px;
+  height: 114px;
 }
-
-
-
-.todo.non-visible {
-  opacity: 0;
-}
-
 .todo.active {
   background-color: #eaeaea;
   cursor: default;
 }
-
-.todo.dir {
-  display: flex;
-  flex-direction: column;
-  background-color: #60eef8;
-  cursor: pointer;
-  height: 50px;
-}
-
-.todo.dir_active{
-  background-color: #d4f807;
-  cursor: default;
-}
-
-.todo.dir_active.active{
-  background-color: #64fa00;
-  cursor: default;
-}
-
 .todo:not(:last-of-type) {
   border-bottom: 1px dashed #ccc;
 }
@@ -213,6 +187,13 @@ main > #TodoDetail {
   height: 300px;
   font-size: 16px;
   padding: 5px 8px;
+}
+
+.logout{
+  background-color: rgba(0, 0, 0, .5);
+  color: white;
+  border-radius: 20px;
+  padding: 5px 15px;
 }
 
 

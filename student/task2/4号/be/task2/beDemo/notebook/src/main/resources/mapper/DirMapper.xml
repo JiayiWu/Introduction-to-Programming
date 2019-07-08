@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.nju.notebook.dao.DirMapper">
+
+    <resultMap id="BaseResultMap" type="cn.edu.nju.notebook.entity.DirEntity">
+
+        <id column="id" jdbcType="INTEGER" property="id" />
+
+        <result column="number"  jdbcType="INTEGER" property="number"/>
+
+        <result column="user" jdbcType="VARCHAR" property="user" />
+
+        <result column="todo" jdbcType="VARCHAR" property="todo"/>
+
+        <result column="title" jdbcType="VARCHAR" property="title" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="cn.edu.nju.notebook.vo.UserVO">
+
+      select
+
+        *
+
+      from dir_list
+
+      where user = #{name,jdbcType=VARCHAR}
+
+    </select>
+
+    <select id = "selectById" resultMap="BaseResultMap" parameterType="cn.edu.nju.notebook.vo.UserVO">
+        select * from dir_list
+        where id = #{id,jdbcType = INTEGER}
+    </select>
+
+
+    <insert id="insert" parameterType="cn.edu.nju.notebook.entity.DirEntity">
+
+      insert into dir_list (id, user, todo, title)
+
+      values (#{id,jdbcType=INTEGER}, #{user,jdbcType=VARCHAR},#{todo,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}
+
+     )
+
+    </insert>
+
+
+
+    <delete id="delete" parameterType="cn.edu.nju.notebook.vo.UserVO">
+
+      delete from dir_list
+
+      where id = #{id}
+
+    </delete>
+
+
+    <update id="update" parameterType="cn.edu.nju.notebook.entity.DirEntity">
+        update dir_list
+        set todo = #{todo,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>
