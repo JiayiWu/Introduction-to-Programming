@@ -10,7 +10,6 @@ public interface FolderService {
     public void delFolder(Integer userId,String name);
     public List<FolderEntity> getFolders(Integer userId);
 
-    public FolderEntity saveFolder(TodoEntity todo);
-    public FolderEntity updateFolder(Integer userId,Integer folderId,String newName);
+    public FolderEntity updateFolder(Integer userId,Integer id,String newName);
 
 }

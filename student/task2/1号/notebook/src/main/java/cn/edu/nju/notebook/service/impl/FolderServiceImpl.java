@@ -49,15 +49,19 @@ public class FolderServiceImpl implements FolderService {
         return folders;
     }
 
-
     @Override
-    public FolderEntity saveFolder(TodoEntity todo) {
-        return null;
-    }
+    public FolderEntity updateFolder(Integer userId, Integer id, String newName) {
+        FolderEntity targetFolder = folderMapper.selectByUserIdAndName(userId,newName);
+        if(targetFolder!=null){
+            throw new ServerException(ResponseCode.Error,"收藏夹已存在");
+        }
+        folderMapper.updateNameByPrimaryKey(id,newName);
 
-    @Override
-    public FolderEntity updateFolder(Integer userId, Integer folderId, String newName) {
-        return null;
+        FolderEntity folderEntity = new FolderEntity();
+        folderEntity.setId(id);
+        folderEntity.setUserId(userId);
+        folderEntity.setName(newName);
+        return folderEntity;
     }
 
 

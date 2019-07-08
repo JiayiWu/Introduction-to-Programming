@@ -84,7 +84,7 @@ public class NotebookApplicationTests {
 
 	@Test
 	@Transactional
-	public void FolderEntityMapperTest(){
+	public void FolderEntityMapperTest1(){
 		logger = LoggerFactory.getLogger(getClass());
 
 		FolderEntity folderEntity = new FolderEntity();
@@ -116,7 +116,7 @@ public class NotebookApplicationTests {
 
 	@Test
 	@Transactional
-	public void TodoEntityMapperTest(){
+	public void TodoEntityMapperTest1(){
 		logger = LoggerFactory.getLogger(getClass());
 
 		TodoEntity todoEntity = new TodoEntity();
@@ -138,4 +138,21 @@ public class NotebookApplicationTests {
 
 	}
 
+
+	@Test
+	@Transactional
+	public void FolderEntityMapperTest2(){
+		logger = LoggerFactory.getLogger(getClass());
+
+		FolderEntity folderEntity = new FolderEntity();
+		folderEntity.setUserId(2);
+		folderEntity.setName("testingFolder2");
+		folderMapper.insert(folderEntity);
+		logger.info(folderEntity.toString());
+		int id = folderEntity.getId();
+		folderMapper.updateNameByPrimaryKey(id,"changedFolder2");
+
+		Assert.assertEquals("changedFolder2",
+				folderMapper.selectByPrimaryKey(id).getName());
+	}
 }

@@ -22,10 +22,10 @@ public class TodoServiceImpl implements TodoService {
         if(todo==null){
             throw new ServerException(ResponseCode.Error,"创建待办事项失败");
         }
-        TodoEntity target = todoMapper.selectByTitle(todo.getTitle());
-        if((target!=null)&& (userId.equals(target.getUserId()))&&(folderId.equals(target.getFolderId()))){
-            throw new ServerException(ResponseCode.Error,"待办事项已存在");
-        }
+//        TodoEntity target = todoMapper.selectByTitle(todo.getTitle());
+//        if((target!=null)&& (userId.equals(target.getUserId()))&&(folderId.equals(target.getFolderId()))){
+//            throw new ServerException(ResponseCode.Error,"待办事项已存在");
+//        }
         TodoEntity todoEntity = new TodoEntity();
         todoEntity.setUserId(userId);
         todoEntity.setFolderId(folderId);
