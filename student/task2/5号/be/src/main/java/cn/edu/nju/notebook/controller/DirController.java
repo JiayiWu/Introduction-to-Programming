@@ -1,6 +1,7 @@
 package cn.edu.nju.notebook.controller;
 
 import cn.edu.nju.notebook.constant.SimpleResponse;
+import cn.edu.nju.notebook.entity.DirEntity;
 import cn.edu.nju.notebook.entity.UserEntity;
 import cn.edu.nju.notebook.form.DirForm;
 import cn.edu.nju.notebook.service.DirService;
@@ -44,8 +45,8 @@ public class DirController {
             return SimpleResponse.error("Please login");
         }
         try {
-            DirVO dirVO = dirService.addDir(userEntity.getId(), dirForm);
-            return SimpleResponse.ok(dirVO);
+            DirEntity dirEntity = dirService.addDir(userEntity.getId(), dirForm);
+            return SimpleResponse.ok(new DirVO(dirEntity));
         }
         catch (Exception e){
             return SimpleResponse.error(e.getMessage());

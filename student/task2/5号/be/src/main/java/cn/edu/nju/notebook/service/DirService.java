@@ -1,5 +1,6 @@
 package cn.edu.nju.notebook.service;
 
+import cn.edu.nju.notebook.entity.DirEntity;
 import cn.edu.nju.notebook.form.DirForm;
 import cn.edu.nju.notebook.vo.DirTodoVO;
 import cn.edu.nju.notebook.vo.DirVO;
@@ -10,7 +11,7 @@ public interface DirService {
 
     public List<DirVO> getDirList(int uid) throws Exception;
 
-    public DirVO addDir(int uid, DirForm dirForm) throws Exception;
+    public DirEntity addDir(int uid, DirForm dirForm) throws Exception;
 
     public void removeDir(int uid, int did) throws Exception;
 
