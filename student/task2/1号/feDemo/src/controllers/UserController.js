@@ -26,6 +26,11 @@ class UserController extends Controller {
       formData[name] = input.value
     })
 
+    if(formData.newpassword!==formData.repassword){
+      alert("两次输入的密码不符，请重新输入！")
+      return
+    }
+    
     const response = await Request.post('/user/password', {
       body: JSON.stringify({
         oldPassword : formData.password,
@@ -36,7 +41,7 @@ class UserController extends Controller {
     if(response.code === 0){
       alert('密码修改成功')
     }
-    else alert('修改失败')
+    else alert('修改失败,请检查原密码是否正确')
 
     this.changeCodeMode()
   }

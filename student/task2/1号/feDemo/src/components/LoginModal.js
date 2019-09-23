@@ -12,6 +12,7 @@ class LoginModal extends Component {
       <form id="loginForm">
         <div><label>原始密码</label><div><input name="password" type="password"/></div></div>
         <div><label>新密码</label><div><input name="repassword" type="password"/></div></div>
+        <div><label>确认密码</label><div><input name="newpassword" type="password"/></div></div>
       </form>
       <footer>
         <button onclick='UserController.changeCodeMode()'>取消</button>
