@@ -5,11 +5,11 @@ class TodoDetail extends Component{
     const { data } = this.model
     if(data.user===null){
       return`
-      <header>用户名:</header>
+      <header>用户名:<button onclick='UserController.changeCodeMode()'>修改密码</button></header>
       `}
     if(data.activeTodoId===0){
       return`
-      <header>用户名:${data.user}</header>
+      <header>用户名:${data.user}<button onclick='UserController.changeCodeMode()'>修改密码</button></header>
       `
     }
     let index
@@ -22,7 +22,7 @@ class TodoDetail extends Component{
     const todo = data.todos[index]
     
     return `
-      <header>用户名:${data.user}</header>
+      <header>用户名:${data.user}<button onclick='UserController.changeCodeMode()'>修改密码</button></header>
       <div class='details'>
         <div class='detail'>
           <p class='itemkey'>Title</p>

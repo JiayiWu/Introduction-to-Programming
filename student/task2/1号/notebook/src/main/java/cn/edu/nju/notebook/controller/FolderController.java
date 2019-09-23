@@ -24,6 +24,7 @@ public class FolderController {
     @PostMapping("/add")
     public SimpleResponse addFolder(HttpSession session, @RequestBody FolderForm folderForm) {
 
+        // 判断是否登录成功
         if (session.getAttribute("user") == null) {
             return SimpleResponse.error("Not login");
         }

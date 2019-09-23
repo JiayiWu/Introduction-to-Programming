@@ -60,7 +60,8 @@ class Model {
     maxTodoId: 0,
     editing: false,
     user: null,
-    isRegister: false
+    isRegister: false,
+    isChangeCode: false
   }
   subscribeFns = []
 

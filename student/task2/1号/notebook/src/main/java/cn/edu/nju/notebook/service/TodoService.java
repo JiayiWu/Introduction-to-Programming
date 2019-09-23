@@ -17,11 +17,4 @@ public interface TodoService {
 
     public List<TodoEntity> getTodos(Integer folderId);
 
-
-
-
-
-
-
-
 }

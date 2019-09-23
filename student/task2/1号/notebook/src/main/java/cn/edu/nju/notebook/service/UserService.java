@@ -15,4 +15,5 @@ public interface UserService {
     public void modifyPassword(int id,String oldPassword, String newPassword);
 
     public UserEntity getUser(int id);
+
 }

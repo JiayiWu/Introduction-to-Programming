@@ -13,8 +13,12 @@ public interface UserMapper {
     UserEntity selectByEmail(String email);
 
     int deleteByPrimaryKey(Integer id);
+
     int insertSelective(UserEntity record);
+
     int updateByPrimaryKeySelective(UserEntity record);
+
     int updateByPrimaryKeyWithBLOBs(UserEntity record);
+
     int updateByPrimaryKey(UserEntity record);
 }

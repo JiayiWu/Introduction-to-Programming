@@ -6,9 +6,41 @@ class UserController extends Controller {
   switchMode() {
     this.model.update(data => ({
       ...data,
-      isRegister: !data.isRegister
+      isRegister: !data.isRegister,
     }))
   }
+
+  changeCodeMode(){
+    this.model.update(data => ({
+      ...data,
+      isChangeCode: !data.isChangeCode
+    }))
+  }
+  
+  async changeCode(){
+    const form = document.getElementById('loginForm')
+    const formInputs = [...form.getElementsByTagName('input')]
+    let formData = {}
+    formInputs.forEach((input) => {
+      const name = input.getAttribute('name')
+      formData[name] = input.value
+    })
+
+    const response = await Request.post('/user/password', {
+      body: JSON.stringify({
+        oldPassword : formData.password,
+        newPassword : formData.repassword
+      }),
+    })
+    
+    if(response.code === 0){
+      alert('密码修改成功')
+    }
+    else alert('修改失败')
+
+    this.changeCodeMode()
+  }
+
   async register() {
     console.log(todoController.fetchTodoList)
     const form = document.getElementById('loginForm')

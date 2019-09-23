@@ -20,8 +20,10 @@
  * @typedef { RequestInit & PostExpand } PostOption
  */
 
-// const serverOrigin = "http://localhost:8999"
-const serverOrigin = "http://47.101.187.188:8999"
+//秦锐鑫的公网IP：47.101.187.188
+
+const serverOrigin = "http://localhost:8999"
+// const serverOrigin = "http://106.15.46.193:8999"
 
 /**
  * 

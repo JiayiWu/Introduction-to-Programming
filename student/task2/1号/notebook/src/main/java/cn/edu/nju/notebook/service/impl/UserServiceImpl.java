@@ -45,6 +45,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @LoggerManage(description = "修改用户密码")
     public void modifyPassword(int id, String oldPassword,String newPassword) {
         UserEntity userEntity = userMapper.selectByPrimaryKey(id);
         try {
@@ -56,6 +57,7 @@ public class UserServiceImpl implements UserService {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+        userMapper.updateByPrimaryKey(userEntity);
     }
 
     @Override

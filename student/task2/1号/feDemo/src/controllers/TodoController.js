@@ -47,6 +47,7 @@ class TodoController extends Controller {
         break
       }
     }
+    
     dirID=this.model.data.todos[index].dirID
     
     const response =await Request.post('/todo/add/'+dirID, {

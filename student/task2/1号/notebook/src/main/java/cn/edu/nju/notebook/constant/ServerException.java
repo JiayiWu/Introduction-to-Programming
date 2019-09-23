@@ -14,7 +14,6 @@ public class ServerException extends RuntimeException{
 
     private int code;
     private String msg;
-
     public String getMessage(){
         return this.msg;
     }

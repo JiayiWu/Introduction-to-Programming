@@ -13,9 +13,6 @@ input, button {
   outline: none;
 }
 
-html {
-
-}
 
 body {
   background: #eaeaea;
@@ -295,3 +292,4 @@ main > #TodoDetail {
 #LoginModal footer > button:active {
   background-color: #ddd;
 }
+

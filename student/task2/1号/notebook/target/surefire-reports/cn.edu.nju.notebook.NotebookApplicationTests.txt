@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: cn.edu.nju.notebook.NotebookApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.563 s - in cn.edu.nju.notebook.NotebookApplicationTests

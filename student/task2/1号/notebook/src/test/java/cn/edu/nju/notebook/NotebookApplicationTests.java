@@ -25,6 +25,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+
 public class NotebookApplicationTests {
 	private Logger logger;
 
@@ -60,6 +61,7 @@ public class NotebookApplicationTests {
 		userMapper.insert(userEntity);
 		UserEntity user1 = userMapper.selectByEmail("test@163.com");
 		Assert.assertEquals("test",user1.getName());
+		Assert.assertEquals("test@163.com",user1.getEmail());
 		logger.info(user1.toString());
 
 	}
